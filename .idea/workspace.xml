@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5d0db46b-ece8-41a5-8809-12161e525dc2" name="Default Changelist" comment="photo_search.py and data_base.py was refactored&#10;and movies_bala.py was created" />
+    <list default="true" id="5d0db46b-ece8-41a5-8809-12161e525dc2" name="Default Changelist" comment="photo_search.py and data_base.py was refactored&#10;and movies_bala.py was created">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -172,15 +175,18 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.testField" />
         <item itemvalue="Python.exec2" />
         <item itemvalue="Python.exec1" />
-        <item itemvalue="Python.testField" />
         <item itemvalue="Python.movies_bala" />
         <item itemvalue="Python.myPyQtLearning" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\mathe\AppData\Roaming\Subversion</configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="5d0db46b-ece8-41a5-8809-12161e525dc2" name="Default Changelist" comment="" />
@@ -231,7 +237,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617641051801</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="photo_search.py and data_base.py was refactored&#10;and movies_bala.py was created">
+      <created>1617641756666</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1617641756666</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
