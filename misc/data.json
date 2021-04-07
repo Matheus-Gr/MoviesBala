@@ -5,7 +5,7 @@
             "name": "Apu",
             "movies": [
                 "Cidade de Deus",
-                "Os homens sao de Marte",
+                "Os homens são de Marte",
                 "Blade Runner, 1982",
                 "Inception",
                 "Her"
@@ -22,16 +22,13 @@
         {
             "_id": 2,
             "name": "Zero",
-            "movies": [
-                "Fight Club"
-            ]
+            "movies": []
         },
         {
             "_id": 3,
             "name": "John",
             "movies": [
                 "Invasão zumbi",
-                "A vida de Brian",
                 "Tropa de Elite",
                 "Ó Paí, Ó"
             ]
@@ -772,6 +769,56 @@
                 }
             ],
             "rotten": "78"
-        }
+        },
+	{
+            "title": "Fight Club",
+            "user": "Zero",
+            "rating": [
+		{
+                    "name": "Zero",
+                    "grade": "4"
+                },
+                {
+                    "name": "Apu",
+                    "grade": "4"
+                },
+                {
+                    "name": "Pikeno",
+                    "grade": "4.5"
+                },
+                {
+                    "name": "Reici",
+                    "grade": "3.5"
+                },
+                {
+                    "name": "John",
+                    "grade": "4.5"
+                }
+	     ],
+            "rotten": "87"
+        },
+	{
+            "title": "A vida de Brian",
+            "user": "John",
+            "rating": [
+                {
+                    "name": "John",
+                    "grade": "2"
+                },
+                {
+                    "name": "Zero",
+                    "grade": "2.5"
+                },
+                {
+                    "name": "Apu",
+                    "grade": "2.5"
+                },
+                {
+                    "name": "Pikeno",
+                    "grade": "2.5"
+                }
+            ],
+            "rotten": "48"
+        }	
     ]
 }

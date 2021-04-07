@@ -56,6 +56,13 @@ class DataBase:
         sql_code = 'TRUNCATE ' + table + ";"
         self.__sql_executor(sql_code)
 
+    def get_data_limited(self, wanted_field, table: str,
+                         start: str, end: str) -> list:
+        sql_code = 'SELECT ' + wanted_field + ' FROM  ' + table + \
+                   ' LIMIT ' + start + ',' + end + ';'
+        self.__sql_executor(sql_code)
+        return self.CURSOR.fetchall()
+
     def __sql_executor(self, sql_code: str):
         print("> {0}".format(sql_code))
         self.CURSOR.execute(sql_code)

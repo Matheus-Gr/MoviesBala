@@ -87,3 +87,51 @@ class MoviesBala:
         self.__data_base.update_data(utils.WATCHED_TABLE, utils.ROTTEN_COLUMN,
                                      str(rotten), utils.MOVIE_ID_COLUMN,
                                      str(movie_id))
+
+    def get_column(self, column: str, table: str) -> list:
+        data = self.__data_base.get_column_data(column, table)
+        data_list = []
+        for item in data:
+            data_list.append(item[0])
+        return data_list
+
+    def get_user_id_by_name(self, name: str) -> int:
+        return self.__data_base.get_data_where(utils.USERS_ID_COLUMN,
+                                               utils.USERS_TABLE,
+                                               utils.NAME_COLUMN,
+                                               "'" + name + "'")[0][0]
+
+    def get_user_id_by_movie_title(self, movie) -> int:
+        return self.__data_base.get_data_where(utils.USERS_ID_COLUMN,
+                                               utils.MOVIES_TABLE,
+                                               utils.TITLE_COLUMN,
+                                               "'" + movie + "'")[0][0]
+
+    def get_movies_title_by_user_id(self, user_id: int) -> list:
+        return self.__data_base.get_data_where(utils.TITLE_COLUMN,
+                                               utils.MOVIES_TABLE,
+                                               utils.USERS_ID_COLUMN,
+                                               str(user_id))
+
+    def get_last_movie_user_id(self) -> int:
+        total = self.__data_base.get_column_data('count(*)',
+                                                 utils.WATCHED_TABLE)[0][0]
+
+        user_id = self.__data_base.get_data_limited(utils.USERS_ID_COLUMN + ","
+                                                    + utils.TITLE_COLUMN,
+                                                    utils.WATCHED_TABLE,
+                                                    str(total - 1),
+                                                    '1')[0][0]
+        return user_id
+
+    def get_movie_id_by_title(self, title: str) -> int:
+        return self.__data_base.get_data_where(utils.MOVIE_ID_COLUMN,
+                                               utils.MOVIES_TABLE,
+                                               utils.TITLE_COLUMN,
+                                               "'" + title + "'")[0][0]
+
+    def get_user_name_by_id(self, user_id: int) -> str:
+        return self.__data_base.get_data_where(utils.NAME_COLUMN,
+                                               utils.USERS_TABLE,
+                                               utils.USERS_ID_COLUMN,
+                                               str(user_id))[0][0]

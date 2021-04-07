@@ -7,7 +7,7 @@ import time
 class PhotoSearch:
     def __init__(self):
         self.IMDB_URL = 'https://www.imdb.com/'
-        self.SAVE_FOLDER = '../posters'
+        self.SAVE_FOLDER = './images/posters'
         self.SLEEP_TIME = 0
         if not os.path.exists(self.SAVE_FOLDER):
             os.mkdir(self.SAVE_FOLDER)
@@ -59,6 +59,7 @@ class PhotoSearch:
             return 1
 
         image_name = self.SAVE_FOLDER + '/' + str(movie_id) + '.jpg'
+        print(image_name)
         with open(image_name, 'wb') as file:
             file.write(response.content)
 

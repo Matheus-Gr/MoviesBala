@@ -32,10 +32,13 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(38, 38, 38);</string>
+   <string notr="true">background-color: rgb(220, 220, 220);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="">
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -66,8 +69,8 @@
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(62, 62, 62);
-color: rgb(235, 235, 235);</string>
+        <string notr="true">background-color: rgb(235, 235, 235);
+color: rgb(38, 38, 38);</string>
        </property>
        <property name="placeholderText">
         <string> Your Name</string>
