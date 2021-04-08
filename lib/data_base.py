@@ -63,6 +63,15 @@ class DataBase:
         self.__sql_executor(sql_code)
         return self.CURSOR.fetchall()
 
+    def get_data_ordered(self, wanted_field: str, table: str,
+                         user_name: str, order: str) -> list:
+        sql_code = 'SELECT ' + wanted_field + ' FROM  ' + table + \
+                   ' WHERE ' + user_name + ' IS NOT NULL  ORDER BY '\
+                   + user_name + ' ' + order + ';'
+
+        self.__sql_executor(sql_code)
+        return self.CURSOR.fetchall()
+
     def __sql_executor(self, sql_code: str):
         print("> {0}".format(sql_code))
         self.CURSOR.execute(sql_code)

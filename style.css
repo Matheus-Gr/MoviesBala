@@ -82,7 +82,7 @@ QTabBar::tab:selected{
     background: #ed213a;
 }
 
-QLabel#label_2,#label_3,#whoWillWatchLabel,#titleLabel{
+QLabel{
     color: snow;
 }
 QLabel#userNameLabel{
@@ -137,6 +137,33 @@ QListWidget#listMovies{
     background:transparent;
     color: rgb(165, 165, 165);
 }
+
+QPushButton#ratingButton{
+    border-radius: 30px;
+}
+QPushButton#ratingButton:hover{
+    background-color: rgb(255, 230, 0);
+}
+
+QPushButton#orderButton{
+    border-radius: 30px;
+}
+QPushButton#orderButton:hover{
+    background-color: rgb(255, 24, 186);
+}
+
+QTreeWidget{
+    background: rgb(77, 77, 77);;
+    border: none;
+    outline: none;
+    color: rgb(148, 148, 148);
+}
+QTreeWidget::item:hover, ::item:selected{
+    color: snow;
+    background: #ed213a;
+    outline: none;
+}
+
 
 QPushButton#drawButton:hover{
     background: rgb(245,106,106);

@@ -35,7 +35,7 @@
         },
         {
             "_id": 4,
-            "name": "Reici",
+            "name": "Rei",
             "movies": [
                 "Os 12 macacos",
                 "Shaun Carneiro 2019",
@@ -106,7 +106,7 @@
         },
         {
             "title": "Colheita Maldita",
-            "user": "Curupira",
+            "user": "Curu",
             "rating": [
                 {
                     "name": "Apu",
@@ -117,7 +117,7 @@
                     "grade": "0"
                 },
                 {
-                    "name": "Curupira",
+                    "name": "Curu",
                     "grade": "2.5"
                 },
                 {
@@ -186,7 +186,7 @@
                     "grade": "2.5"
                 },
                 {
-                    "name": "Curupira",
+                    "name": "Curu",
                     "grade": "3.5"
                 },
                 {
@@ -232,7 +232,7 @@
                     "grade": "4"
                 },
                 {
-                    "name": "Curupira",
+                    "name": "Curu",
                     "grade": "5"
                 },
                 {
@@ -438,7 +438,7 @@
                     "grade": "3.5"
                 },
                 {
-                    "name": "Reici",
+                    "name": "Rei",
                     "grade": "3"
                 }
             ],
@@ -484,10 +484,10 @@
         },
         {
             "title": "Ethel e Ernest",
-            "user": "Reici",
+            "user": "Rei",
             "rating": [
                 {
-                    "name": "Reici",
+                    "name": "Rei",
                     "grade": "3.5"
                 },
                 {
@@ -503,7 +503,7 @@
                     "grade": "3"
                 },
                 {
-                    "name": "Mingau",
+                    "name": "Juuj",
                     "grade": "3.5"
                 }
             ],
@@ -518,7 +518,7 @@
                     "grade": "4"
                 },
                 {
-                    "name": "Reici",
+                    "name": "Rei",
                     "grade": "4"
                 },
                 {
@@ -541,7 +541,7 @@
                     "grade": "4"
                 },
                 {
-                    "name": "Reici",
+                    "name": "Rei",
                     "grade": "4.5"
                 },
                 {
@@ -587,7 +587,7 @@
                     "grade": "4"
                 },
                 {
-                    "name": "Reici",
+                    "name": "Rei",
                     "grade": "3"
                 },
                 {
@@ -618,7 +618,7 @@
                     "grade": "3.5"
                 },
                 {
-                    "name": "Reici",
+                    "name": "Rei",
                     "grade": "4"
                 }
             ],
@@ -633,7 +633,7 @@
                     "grade": "3.5"
                 },
                 {
-                    "name": "Reici",
+                    "name": "Rei",
                     "grade": "4.5"
                 },
                 {
@@ -660,7 +660,7 @@
                     "grade": "3"
                 },
                 {
-                    "name": "Reici",
+                    "name": "Rei",
                     "grade": "3.5"
                 },
                 {
@@ -672,10 +672,10 @@
         },
         {
             "title": "Jóias Brutas",
-            "user": "Reici",
+            "user": "Rei",
             "rating": [
                 {
-                    "name": "Reici",
+                    "name": "Rei",
                     "grade": "3.5"
                 },
                 {
@@ -725,7 +725,7 @@
                     "grade": "4"
                 },
                 {
-                    "name": "Reici",
+                    "name": "Rei",
                     "grade": "5"
                 },
                 {
@@ -745,10 +745,10 @@
         },
         {
             "title": "Brilho Eterno de uma Mente sem Lembranças",
-            "user": "Reici",
+            "user": "Rei",
             "rating": [
                 {
-                    "name": "Reici",
+                    "name": "Rei",
                     "grade": "4.5"
                 },
                 {
@@ -787,7 +787,7 @@
                     "grade": "4.5"
                 },
                 {
-                    "name": "Reici",
+                    "name": "Rei",
                     "grade": "3.5"
                 },
                 {

@@ -10,41 +10,70 @@ from PyQt5 import QtGui
 mb = movies_bala.MoviesBala()
 
 show_text = False
+movie_list_items = {}
+watched_tree_items = {}
 
 
 def init_data():
     update_user_list()
     movies_list = mb.get_column(utils.TITLE_COLUMN, utils.MOVIES_TABLE)
     update_movie_list(movies_list)
+    watched_list = mb.get_column(utils.TITLE_COLUMN, utils.WATCHED_TABLE)
+    update_watched_list(watched_list)
 
 
 def update_movie_list(movies_list: list):
+    movie_list_items.clear()
     ui.listMovies.clear()
+    user_list = mb.get_column(utils.NAME_COLUMN, utils.USERS_TABLE)
     for movie in movies_list:
-        user_id = mb.get_user_id_by_movie_title(movie)
-
-        user = mb.get_user_name_by_id(user_id)
-
-        movie_id = mb.get_movie_id_by_title(movie)
+        movie_row = mb.get_row_by_title(movie, utils.MOVIES_TABLE)
 
         global show_text
-        item_text = movie + "\n" + user
+        item_text = "{0}\n{1}".format(movie, user_list[movie_row[1] - 1])
         if show_text:
             item = QListWidgetItem(item_text)
         else:
             item = QListWidgetItem()
-        item.setIcon(QIcon(r"./images/posters/" + str(movie_id) + ".jpg"))
+
+        try:
+            item.setIcon(
+                QIcon(r"./images/posters/{0}.jpg".format(movie_row[0])))
+        except:
+            print('Was no cover')
+        movie_list_items[str(item)] = movie_row[0]
+
         ui.listMovies.addItem(item)
 
 
-def update_watched_list():
-    movie_list = mb.get_column(utils.TITLE_COLUMN, utils.WATCHED_TABLE)
+def update_watched_list(watched_list: list):
+    watched_tree_items.clear()
+    ui.watchedTree.clear()
+    user_list = mb.get_column(utils.NAME_COLUMN, utils.USERS_TABLE)
+    for movie in watched_list:
+        movie_row = mb.get_row_by_title(movie, utils.WATCHED_TABLE)
 
-    for movie in movie_list:
-        user_id = mb.get_user_id_by_movie_title(movie)
-        user_name = mb.get_user_name_by_id(user_id)
+        item_movie = QTreeWidgetItem()
+        item_movie.setIcon(0,
+                           QIcon(r"./images/posters/{0}.jpg".format(
+                               movie_row[0])))
+        if movie_row[3] is not None:
+            item_movie.setText(0,
+                               "{0}\nRotten:{1}%".format(movie,
+                                                         round(movie_row[3])))
+        else:
+            item_movie.setText(0, "{0}".format(movie))
+        index = 4
+        for user in user_list:
+            if movie_row[index] is not None:
+                item_grade = QTreeWidgetItem()
+                item_grade.setText(0, "{0}: {1}".format(user, movie_row[index]))
+                item_movie.addChild(item_grade)
+            index += 1
 
-        item = QListWidgetItem()
+        watched_tree_items[str(item_movie)] = movie_row[0]
+
+        ui.watchedTree.addTopLevelItem(item_movie)
 
 
 def update_user_list():
@@ -73,6 +102,15 @@ def update_user_list():
     ui.whoWillWatchComboBox.clear()
     ui.whoWillWatchComboBox.addItem('None')
     ui.whoWillWatchComboBox.addItems(new_user_list)
+
+    # Page 3
+    ui.userRating.clear()
+    ui.userRating.addItem('None')
+    ui.userRating.addItems(user_list)
+
+    ui.ratingColumnPicker.clear()
+    ui.ratingColumnPicker.addItem('Rotten')
+    ui.ratingColumnPicker.addItems(user_list)
 
 
 def show_page_1():
@@ -121,16 +159,19 @@ def add_movie():
 
 
 def delete_movie():
-    item = ui.listMovies.selectedItems()
+    item = ui.listMovies.currentItem()
+
     if item:
-        movies_list = mb.get_column(utils.TITLE_COLUMN, utils.MOVIES_TABLE)
-        item_index = ui.listMovies.row(item[0])
-        movie_id = mb.get_movie_id_by_title(movies_list[item_index])
+        global movie_list_items
+        movie_id = movie_list_items.get(str(item))
+        print(movie_id)
 
         mb.delete_movie(movie_id)
+
         movies_list = mb.get_column(utils.TITLE_COLUMN, utils.MOVIES_TABLE)
         update_movie_list(movies_list)
         update_user_list()
+
         try:
             os.remove("./images/posters/" + str(movie_id) + ".jpg")
         except:
@@ -233,9 +274,40 @@ def draw_movie():
         movies_list = mb.get_column(utils.TITLE_COLUMN, utils.MOVIES_TABLE)
         update_movie_list(movies_list)
         update_user_list()
+        watched_list = mb.get_column(utils.TITLE_COLUMN, utils.WATCHED_TABLE)
+        update_watched_list(watched_list)
 
 
 # Page 3
+def rating():
+    item = ui.watchedTree.selectedItems()
+    if item:
+        move_id = watched_tree_items.get(str(item[0]))
+        print(move_id)
+        user_name = ui.userRating.currentText()
+
+        grade = ui.gradeLineEdit.text()
+        if grade != '' and user_name != 'None' and move_id is not None:
+            mb.add_rating(user_name, move_id, float(grade))
+            watched_list = mb.get_column(utils.TITLE_COLUMN,
+                                         utils.WATCHED_TABLE)
+            update_watched_list(watched_list)
+            ui.userRating.setCurrentText('None')
+            ui.gradeLineEdit.setText('')
+
+
+def order_watched():
+    order = ui.orderComboBox.currentText()
+    user = ui.ratingColumnPicker.currentText()
+
+    if order == 'Highest grade':
+        watched_list = mb.get_watched_list_ordered(True, user)
+    else:
+        watched_list = mb.get_watched_list_ordered(False, user)
+
+    ui.ratingColumnPicker.setCurrentText('None')
+    update_watched_list(watched_list)
+
 
 app = QtWidgets.QApplication([])
 ui = uic.loadUi("./ui/moviesBala.ui")
@@ -263,7 +335,8 @@ ui.deleteWhoWatchButton.clicked.connect(delete_who_watch)
 ui.drawButton.clicked.connect(draw_movie)
 
 # PAGE 3
-ui.pushButtonB.clicked.connect(update_watched_list)
+ui.ratingButton.clicked.connect(rating)
+ui.orderButton.clicked.connect(order_watched)
 
 ui.show()
 app.exec()

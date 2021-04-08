@@ -54,12 +54,7 @@ class MoviesBala:
         self.__data_base.delete_data(utils.MOVIES_TABLE,
                                      utils.MOVIE_ID_COLUMN, str(movie_id))
 
-    def add_rating(self, user_id: int, movie_id, rating: float):
-        user_name = self.__data_base.get_data_where(utils.NAME_COLUMN,
-                                                    utils.USERS_TABLE,
-                                                    utils.USERS_ID_COLUMN,
-                                                    str(user_id))[0][0]
-
+    def add_rating(self, user_name: str, movie_id: int, rating: float):
         self.__data_base.update_data(utils.WATCHED_TABLE, user_name,
                                      str(round(rating, 1)),
                                      utils.MOVIE_ID_COLUMN,
@@ -135,3 +130,23 @@ class MoviesBala:
                                                utils.USERS_TABLE,
                                                utils.USERS_ID_COLUMN,
                                                str(user_id))[0][0]
+
+    def get_row_by_title(self, title: str, table: str) -> list:
+        return list(self.__data_base.get_data_where(utils.ALL_COLUMNS,
+                                                    table,
+                                                    utils.TITLE_COLUMN,
+                                                    "'" + title + "'")[0])
+
+    def get_watched_list_ordered(self, highest: bool, user)->list:
+        if highest:
+            order = 'DESC'
+        else:
+            order = 'ASC'
+
+        data = self.__data_base.get_data_ordered(utils.ALL_COLUMNS,
+                                                 utils.WATCHED_TABLE,
+                                                 user, order)
+        data_list = []
+        for item in data:
+            data_list.append(item[2])
+        return data_list
