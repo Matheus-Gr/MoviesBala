@@ -102,9 +102,9 @@ class MoviesBala:
                                                utils.TITLE_COLUMN,
                                                "'" + movie + "'")[0][0]
 
-    def get_movies_title_by_user_id(self, user_id: int) -> list:
+    def get_movies_title_by_user_id(self, user_id: int, table: str) -> list:
         return self.__data_base.get_data_where(utils.TITLE_COLUMN,
-                                               utils.MOVIES_TABLE,
+                                               table,
                                                utils.USERS_ID_COLUMN,
                                                str(user_id))
 
@@ -137,7 +137,7 @@ class MoviesBala:
                                                     utils.TITLE_COLUMN,
                                                     "'" + title + "'")[0])
 
-    def get_watched_list_ordered(self, highest: bool, user)->list:
+    def get_watched_list_ordered(self, highest: bool, user) -> list:
         if highest:
             order = 'DESC'
         else:

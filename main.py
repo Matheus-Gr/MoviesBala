@@ -54,9 +54,13 @@ def update_watched_list(watched_list: list):
         movie_row = mb.get_row_by_title(movie, utils.WATCHED_TABLE)
 
         item_movie = QTreeWidgetItem()
-        item_movie.setIcon(0,
-                           QIcon(r"./images/posters/{0}.jpg".format(
-                               movie_row[0])))
+        try:
+            item_movie.setIcon(0,
+                               QIcon(r"./images/posters/{0}.jpg".format(
+                                   movie_row[0])))
+        except:
+            print('Was no poster')
+
         if movie_row[3] is not None:
             item_movie.setText(0,
                                "{0}\nRotten:{1}%".format(movie,
@@ -74,6 +78,8 @@ def update_watched_list(watched_list: list):
         watched_tree_items[str(item_movie)] = movie_row[0]
 
         ui.watchedTree.addTopLevelItem(item_movie)
+
+    ui.movieCounterLabel.setText(str(len(watched_list)))
 
 
 def update_user_list():
@@ -132,7 +138,7 @@ def filter_movie_list():
     if user != 'None':
         user_id = mb.get_user_id_by_name(user)
 
-        data = mb.get_movies_title_by_user_id(user_id)
+        data = mb.get_movies_title_by_user_id(user_id, utils.MOVIES_TABLE)
 
         movies_list = []
         for item in data:
@@ -175,7 +181,7 @@ def delete_movie():
         try:
             os.remove("./images/posters/" + str(movie_id) + ".jpg")
         except:
-            print('Was no Cover')
+            print('Was no poster')
 
 
 def add_user():
@@ -247,7 +253,7 @@ def draw_movie():
 
         movies_list = []
         for user_id in who_watching:
-            data = mb.get_movies_title_by_user_id(user_id)
+            data = mb.get_movies_title_by_user_id(user_id, utils.MOVIES_TABLE)
 
             for item in data:
                 movies_list.append(item[0])
@@ -256,7 +262,7 @@ def draw_movie():
         user_draw = who_watching[user_index_draw]
 
         movies_list.clear()
-        data = mb.get_movies_title_by_user_id(user_draw)
+        data = mb.get_movies_title_by_user_id(user_draw, utils.MOVIES_TABLE)
         for item in data:
             movies_list.append(item[0])
 
@@ -302,10 +308,18 @@ def order_watched():
 
     if order == 'Highest grade':
         watched_list = mb.get_watched_list_ordered(True, user)
-    else:
+    elif order == 'Lowest grade':
         watched_list = mb.get_watched_list_ordered(False, user)
+    elif order == 'Indicated by' and user != 'Rotten':
+        user_id = mb.get_user_id_by_name(user)
+        data = mb.get_movies_title_by_user_id(user_id,utils.WATCHED_TABLE)
+        watched_list = []
+        for movie in data:
+            watched_list.append(movie[0])
+        print(watched_list)
+    else:
+        watched_list = mb.get_column(utils.TITLE_COLUMN, utils.WATCHED_TABLE)
 
-    ui.ratingColumnPicker.setCurrentText('None')
     update_watched_list(watched_list)
 
 

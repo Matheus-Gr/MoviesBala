@@ -55,7 +55,7 @@
        <cursorShape>ArrowCursor</cursorShape>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="page">
        <layout class="QGridLayout" name="gridLayout_2">
@@ -1185,44 +1185,6 @@
           </property>
           <layout class="QGridLayout" name="gridLayout_3">
            <item row="0" column="1">
-            <widget class="QTreeWidget" name="watchedTree">
-             <property name="font">
-              <font>
-               <family>Poppins</family>
-               <pointsize>20</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="cursor" stdset="0">
-              <cursorShape>PointingHandCursor</cursorShape>
-             </property>
-             <property name="verticalScrollBarPolicy">
-              <enum>Qt::ScrollBarAlwaysOff</enum>
-             </property>
-             <property name="horizontalScrollBarPolicy">
-              <enum>Qt::ScrollBarAlwaysOff</enum>
-             </property>
-             <property name="iconSize">
-              <size>
-               <width>81</width>
-               <height>134</height>
-              </size>
-             </property>
-             <property name="animated">
-              <bool>true</bool>
-             </property>
-             <attribute name="headerVisible">
-              <bool>false</bool>
-             </attribute>
-             <column>
-              <property name="text">
-               <string>Watched</string>
-              </property>
-             </column>
-            </widget>
-           </item>
-           <item row="0" column="2">
             <widget class="QFrame" name="frame_17">
              <property name="minimumSize">
               <size>
@@ -1383,7 +1345,12 @@
               </item>
               <item>
                <property name="text">
-                <string>Lower grade</string>
+                <string>Lowest grade</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Indicated by</string>
                </property>
               </item>
              </widget>
@@ -1435,6 +1402,96 @@
                <set>Qt::AlignCenter</set>
               </property>
              </widget>
+             <widget class="QLabel" name="movieCounterLabel">
+              <property name="geometry">
+               <rect>
+                <x>150</x>
+                <y>670</y>
+                <width>101</width>
+                <height>51</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>Poppins ExtraBold</family>
+                <pointsize>22</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QFrame" name="frame_19">
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_4">
+              <item>
+               <widget class="QTextEdit" name="textEdit">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>41</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTreeWidget" name="watchedTree">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Poppins</family>
+                  <pointsize>20</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="cursor" stdset="0">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="verticalScrollBarPolicy">
+                 <enum>Qt::ScrollBarAlwaysOff</enum>
+                </property>
+                <property name="horizontalScrollBarPolicy">
+                 <enum>Qt::ScrollBarAlwaysOff</enum>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>81</width>
+                  <height>134</height>
+                 </size>
+                </property>
+                <property name="animated">
+                 <bool>true</bool>
+                </property>
+                <attribute name="headerVisible">
+                 <bool>false</bool>
+                </attribute>
+                <column>
+                 <property name="text">
+                  <string>Watched</string>
+                 </property>
+                </column>
+               </widget>
+              </item>
+             </layout>
             </widget>
            </item>
           </layout>
