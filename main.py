@@ -4,8 +4,8 @@ import random
 from PyQt5 import uic, QtWidgets
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon
-from lib import utils, movies_bala
 from PyQt5 import QtGui
+from lib import utils, movies_bala
 
 mb = movies_bala.MoviesBala()
 
@@ -173,7 +173,6 @@ def delete_movie():
     if item:
         global movie_list_items
         movie_id = movie_list_items.get(str(item))
-        print(movie_id)
 
         mb.delete_movie(movie_id)
 
@@ -295,7 +294,6 @@ def rating():
     item = ui.watchedTree.selectedItems()
     if item:
         move_id = watched_tree_items.get(str(item[0]))
-        print(move_id)
         user_name = ui.userRating.currentText()
 
         grade = ui.gradeLineEdit.text()
@@ -311,7 +309,7 @@ def rating():
 def order_watched():
     order = ui.orderComboBox.currentText()
     user = ui.ratingColumnPicker.currentText()
-    print(order)
+
     if order == 'Highest grade':
         watched_list = mb.get_watched_list_ordered(True, user)
         update_watched_list(watched_list)
@@ -324,7 +322,6 @@ def order_watched():
         watched_list = []
         for movie in data:
             watched_list.append(movie[0])
-        print(watched_list)
         update_watched_list(watched_list)
     elif order == 'A-Z':
         watched_list = mb.get_watched_list_ordered(True, user)

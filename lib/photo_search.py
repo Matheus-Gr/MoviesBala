@@ -3,7 +3,6 @@ import requests
 from bs4 import BeautifulSoup
 import time
 from lib import data_base
-from misc import localhostDataBase
 
 
 class PhotoSearch:
@@ -12,7 +11,6 @@ class PhotoSearch:
         self.SAVE_FOLDER = './images/posters'
         self.SLEEP_TIME = 0
         self.DATA_BASE = data_base.DataBase()
-        self.LOCAL_DB = localhostDataBase.LHDataBase()
         if not os.path.exists(self.SAVE_FOLDER):
             os.mkdir(self.SAVE_FOLDER)
 
@@ -36,8 +34,8 @@ class PhotoSearch:
             search_url = self.IMDB_URL + link['href']
         except:
             print('################################ Movie not found! :/')
-            self.LOCAL_DB.insert_a_data('posters(movie_id,url)',
-                                        str(movie_id) + ',"NULL"')
+            self.DATA_BASE.insert_a_data('posters(movie_id,url)',
+                                         str(movie_id) + ',"NULL"')
             return 1
 
         print("Sub searched url: " + search_url)
@@ -53,8 +51,8 @@ class PhotoSearch:
 
         print("Image Link: " + image_link)
 
-        self.LOCAL_DB.insert_a_data('posters(movie_id,url)',
-                                    str(movie_id) + ',"' + image_link + '"')
+        self.DATA_BASE.insert_a_data('posters(movie_id,url)',
+                                     str(movie_id) + ',"' + image_link + '"')
 
         return 0
 

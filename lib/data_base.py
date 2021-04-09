@@ -68,7 +68,6 @@ class DataBase:
         sql_code = 'SELECT ' + wanted_field + ' FROM  ' + table + \
                    ' WHERE ' + user_name + ' IS NOT NULL  ORDER BY ' \
                    + user_name + ' ' + order + ';'
-
         self.__sql_executor(sql_code)
         return self.CURSOR.fetchall()
 
