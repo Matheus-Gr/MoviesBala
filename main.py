@@ -305,22 +305,51 @@ def rating():
 def order_watched():
     order = ui.orderComboBox.currentText()
     user = ui.ratingColumnPicker.currentText()
-
+    print(order)
     if order == 'Highest grade':
         watched_list = mb.get_watched_list_ordered(True, user)
+        update_watched_list(watched_list)
     elif order == 'Lowest grade':
         watched_list = mb.get_watched_list_ordered(False, user)
+        update_watched_list(watched_list)
     elif order == 'Indicated by' and user != 'Rotten':
         user_id = mb.get_user_id_by_name(user)
-        data = mb.get_movies_title_by_user_id(user_id,utils.WATCHED_TABLE)
+        data = mb.get_movies_title_by_user_id(user_id, utils.WATCHED_TABLE)
         watched_list = []
         for movie in data:
             watched_list.append(movie[0])
         print(watched_list)
+        update_watched_list(watched_list)
+    elif order == 'A-Z':
+        watched_list = mb.get_watched_list_ordered(True, user)
+        update_watched_list(watched_list)
+        ui.watchedTree.sortItems(0, 0)
+    elif order == 'Z-A':
+        watched_list = mb.get_watched_list_ordered(True, user)
+        update_watched_list(watched_list)
+        ui.watchedTree.sortItems(0, 1)
+    elif order == 'Date ↑':
+        watched_list = mb.get_column(utils.TITLE_COLUMN, utils.WATCHED_TABLE)
+        watched_list.reverse()
+        update_watched_list(watched_list)
+    elif order == 'Date ↓':
+        watched_list = mb.get_column(utils.TITLE_COLUMN, utils.WATCHED_TABLE)
+        update_watched_list(watched_list)
+
+
+def search_watched():
+    ui.watchedTree.sortItems(0, 0)
+    text = ui.search_watchedLineEdit.text()
+    print(text)
+    if text != '':
+        watched_list = [text]
     else:
         watched_list = mb.get_column(utils.TITLE_COLUMN, utils.WATCHED_TABLE)
-
-    update_watched_list(watched_list)
+    try:
+        update_watched_list(watched_list)
+    except:
+        print('Not found')
+    ui.search_watchedLineEdit.setText('')
 
 
 app = QtWidgets.QApplication([])
@@ -351,6 +380,7 @@ ui.drawButton.clicked.connect(draw_movie)
 # PAGE 3
 ui.ratingButton.clicked.connect(rating)
 ui.orderButton.clicked.connect(order_watched)
+ui.searchWatchedButton.clicked.connect(search_watched)
 
 ui.show()
 app.exec()

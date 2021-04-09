@@ -102,6 +102,7 @@ QLineEdit:focus{
     border-right: none;
     border-bottom: 2px solid #ed213a;
 }
+
 QPushButton{
     border-radius: 25px;
     background-color: rgb(80, 80, 80);
@@ -164,8 +165,17 @@ QTreeWidget::item:hover, ::item:selected{
     outline: none;
 }
 
+QLineEdit#search_watchedLineEdit{
+    font-size: 18px;
+}
+
+QPushButton#searchWatchedButton:hover{
+    background: #ed213a;
+}
+
 
 QPushButton#drawButton:hover{
     background: rgb(245,106,106);
     background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(245, 106, 106, 255), stop:0.35 rgba(221, 33, 100, 255), stop:1 rgba(255, 0, 172, 255));
 }
+

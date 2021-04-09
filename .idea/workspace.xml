@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5d0db46b-ece8-41a5-8809-12161e525dc2" name="Default Changelist" comment="version 1.0">
-      <change afterPath="$PROJECT_DIR$/bk/127_0_0_1.sql" afterDir="false" />
+    <list default="true" id="5d0db46b-ece8-41a5-8809-12161e525dc2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/images/icons/black_icons/star_black_24dp.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/icons/black_icons/star_border_black_24dp.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/movies_bala.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/movies_bala.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/moviesBala.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/moviesBala.ui" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -261,7 +262,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617859164195</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="some bugs fixed when image not found&#10;added movie watched counter&#10;added 'Indicated by' filter">
+      <created>1617918992297</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1617918992297</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -289,6 +297,7 @@
     <MESSAGE value="photo_search.py and data_base.py was refactored&#10;and movies_bala.py was created" />
     <MESSAGE value="first 2 pages entire functional and completed design" />
     <MESSAGE value="version 1.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 1.0" />
+    <MESSAGE value="some bugs fixed when image not found&#10;added movie watched counter&#10;added 'Indicated by' filter" />
+    <option name="LAST_COMMIT_MESSAGE" value="some bugs fixed when image not found&#10;added movie watched counter&#10;added 'Indicated by' filter" />
   </component>
 </project>
