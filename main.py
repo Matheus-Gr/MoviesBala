@@ -257,7 +257,8 @@ def draw_movie():
 
             movies_list = []
             for user_id in who_watching:
-                data = mb.get_movies_title_by_user_id(user_id, utils.MOVIES_TABLE)
+                data = mb.get_movies_title_by_user_id(user_id,
+                                                      utils.MOVIES_TABLE)
 
                 for item in data:
                     movies_list.append(item[0])
@@ -276,7 +277,7 @@ def draw_movie():
             ui.titleLabel.setText(movie_draw)
             user_name = mb.get_user_name_by_id(user_draw)
             ui.userNameLabel.setText(user_name)
-            movie_id = mb.get_movie_id_by_title(movie_draw,utils.MOVIES_TABLE)
+            movie_id = mb.get_movie_id_by_title(movie_draw, utils.MOVIES_TABLE)
             poster_path = './images/posters/' + str(movie_id) + '.jpg'
             ui.posterLabel.setPixmap(QtGui.QPixmap(poster_path))
             mb.move_to_watched(movie_id)
@@ -284,7 +285,8 @@ def draw_movie():
             movies_list = mb.get_column(utils.TITLE_COLUMN, utils.MOVIES_TABLE)
             update_movie_list(movies_list)
             update_user_list()
-            watched_list = mb.get_column(utils.TITLE_COLUMN, utils.WATCHED_TABLE)
+            watched_list = mb.get_column(utils.TITLE_COLUMN,
+                                         utils.WATCHED_TABLE)
             update_watched_list(watched_list)
 
 
@@ -344,11 +346,15 @@ def order_watched():
 def search_watched():
     ui.watchedTree.sortItems(0, 0)
     text = ui.search_watchedLineEdit.text()
-    print(text)
     if text != '':
-        watched_list = [text]
+        watched_data = mb.get_column(utils.TITLE_COLUMN, utils.WATCHED_TABLE)
+        watched_list = []
+        for movie in watched_data:
+            if text.lower() in movie.lower():
+                watched_list.append(movie)
     else:
         watched_list = mb.get_column(utils.TITLE_COLUMN, utils.WATCHED_TABLE)
+
     try:
         update_watched_list(watched_list)
     except:

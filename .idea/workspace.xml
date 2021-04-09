@@ -1,73 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5d0db46b-ece8-41a5-8809-12161e525dc2" name="Default Changelist" comment="added more filters in for watched list">
-      <change afterPath="$PROJECT_DIR$/GabiGolNoVasco.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bk/127_0_0_1.sql.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/misc/copy_database.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/misc/localhostDataBase.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/misc/moviesBALA.py" afterDir="false" />
+    <list default="true" id="5d0db46b-ece8-41a5-8809-12161e525dc2" name="Default Changelist" comment="version 1.2&#10;online posters">
+      <change afterPath="$PROJECT_DIR$/build/main/Analysis-00.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/main/EXE-00.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/main/PKG-00.pkg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/main/PKG-00.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/main/PYZ-00.pyz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/main/PYZ-00.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/main/Tree-00.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/main/Tree-01.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/main/Tree-02.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/main/base_library.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/main/main.exe.manifest" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/main/warn-main.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/main/xref-main.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/main.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/12.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/14.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/16.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/17.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/18.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/19.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/20.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/21.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/22.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/23.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/24.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/25.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/26.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/27.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/28.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/29.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/30.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/31.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/32.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/33.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/34.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/35.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/36.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/37.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/38.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/39.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/40.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/41.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/42.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/43.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/44.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/45.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/46.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/47.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/48.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/49.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/50.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/51.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/52.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/53.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/54.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/posters/9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logobala.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main.spec" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/10.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/11.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/12.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/14.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/16.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/17.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/18.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/19.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/20.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/21.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/22.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/23.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/24.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/25.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/26.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/27.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/28.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/29.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/30.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/31.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/32.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/33.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/34.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/35.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/36.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/37.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/38.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/39.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/40.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/41.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/42.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/43.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/44.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/45.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/46.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/47.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/48.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/49.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/51.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/53.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/56.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/57.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/58.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data_base.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data_base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/movies_bala.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/movies_bala.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/photo_search.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/photo_search.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/testField.py" beforeDir="false" afterPath="$PROJECT_DIR$/misc/testField.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/moviesBala.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/moviesBala.ui" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +133,7 @@
       <recent name="C:\Users\mathe\User\Projetos\Sorteio2.0\lib" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.copy_database">
+  <component name="RunManager" selected="Python.main">
     <configuration name="copy_database" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Sorteio2.0" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -241,8 +248,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.copy_database" />
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.copy_database" />
         <item itemvalue="Python.testField" />
       </list>
     </recent_temporary>
@@ -337,7 +344,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617934551064</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="version 1.2&#10;online posters">
+      <created>1617974261588</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1617974261588</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -367,6 +381,7 @@
     <MESSAGE value="version 1.0" />
     <MESSAGE value="some bugs fixed when image not found&#10;added movie watched counter&#10;added 'Indicated by' filter" />
     <MESSAGE value="added more filters in for watched list" />
-    <option name="LAST_COMMIT_MESSAGE" value="added more filters in for watched list" />
+    <MESSAGE value="version 1.2&#10;online posters" />
+    <option name="LAST_COMMIT_MESSAGE" value="version 1.2&#10;online posters" />
   </component>
 </project>

@@ -1536,7 +1536,7 @@
                    </property>
                    <property name="icon">
                     <iconset>
-                     <normaloff>../../../../AppData/Local/Programs/Python/Python39/Lib/site-packages/qt5_applications/Qt/bin/Icons/search_black_24dp.svg</normaloff>../../../../AppData/Local/Programs/Python/Python39/Lib/site-packages/qt5_applications/Qt/bin/Icons/search_black_24dp.svg</iconset>
+                     <normaloff>../images/icons/black_icons/search_black_24dp.svg</normaloff>../images/icons/black_icons/search_black_24dp.svg</iconset>
                    </property>
                    <property name="iconSize">
                     <size>
