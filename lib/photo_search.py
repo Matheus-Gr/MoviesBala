@@ -2,6 +2,8 @@ import os
 import requests
 from bs4 import BeautifulSoup
 import time
+from lib import data_base
+from misc import localhostDataBase
 
 
 class PhotoSearch:
@@ -9,10 +11,12 @@ class PhotoSearch:
         self.IMDB_URL = 'https://www.imdb.com/'
         self.SAVE_FOLDER = './images/posters'
         self.SLEEP_TIME = 0
+        self.DATA_BASE = data_base.DataBase()
+        self.LOCAL_DB = localhostDataBase.LHDataBase()
         if not os.path.exists(self.SAVE_FOLDER):
             os.mkdir(self.SAVE_FOLDER)
 
-    def get_image(self, movie_title: str, movie_id: int) -> int:
+    def get_url(self, movie_title: str, movie_id: int) -> int:
         print('\nStart searching for {0}...'.format(movie_title))
 
         movie_title = self.__treat_string(movie_title)
@@ -32,6 +36,8 @@ class PhotoSearch:
             search_url = self.IMDB_URL + link['href']
         except:
             print('################################ Movie not found! :/')
+            self.LOCAL_DB.insert_a_data('posters(movie_id,url)',
+                                        str(movie_id) + ',"NULL"')
             return 1
 
         print("Sub searched url: " + search_url)
@@ -46,24 +52,10 @@ class PhotoSearch:
             image_link = image['src']
 
         print("Image Link: " + image_link)
-        print("Starting download...")
 
-        try:
-            response = requests.get(image_link, timeout=5)
-            time.sleep(self.SLEEP_TIME)
-        except requests.exceptions.Timeout:
-            print('################################ TIME OUT')
-            return 1
-        except:
-            print('################################ Movie not found! :/')
-            return 1
+        self.LOCAL_DB.insert_a_data('posters(movie_id,url)',
+                                    str(movie_id) + ',"' + image_link + '"')
 
-        image_name = self.SAVE_FOLDER + '/' + str(movie_id) + '.jpg'
-        print(image_name)
-        with open(image_name, 'wb') as file:
-            file.write(response.content)
-
-        print("Download finished!")
         return 0
 
     @staticmethod
@@ -77,3 +69,26 @@ class PhotoSearch:
                 string_list[i] = '%2C'
             i += 1
         return ''.join(string_list)
+
+    def download_image(self, url, movie_id):
+        image_name = self.SAVE_FOLDER + '/' + str(movie_id) + '.jpg'
+        print(image_name)
+
+        if not os.path.exists(image_name):
+            print("Starting download...")
+
+            try:
+                response = requests.get(url, timeout=5)
+                time.sleep(self.SLEEP_TIME)
+            except requests.exceptions.Timeout:
+                print('################################ TIME OUT')
+                return 1
+            except:
+                print('################################ Movie not found! :/')
+                return 1
+
+            with open(image_name, 'wb') as file:
+                file.write(response.content)
+                print("Download finished!")
+        else:
+            print('Already downloaded')

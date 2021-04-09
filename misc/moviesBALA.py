@@ -1,11 +1,12 @@
-from lib import data_base, utils, photo_search
+from lib import utils, photo_search
+from misc import localhostDataBase
 
 
 # -*- coding: utf-8 -*-
 
-class MoviesBala:
+class MoviesBalaC:
     def __init__(self):
-        self.__data_base = data_base.DataBase()
+        self.__data_base = localhostDataBase.LHDataBase()
         self.__photo_search = photo_search.PhotoSearch()
 
     def add_user(self, user_name: str):

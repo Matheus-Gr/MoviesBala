@@ -28,7 +28,7 @@ def update_movie_list(movies_list: list):
     user_list = mb.get_column(utils.NAME_COLUMN, utils.USERS_TABLE)
     for movie in movies_list:
         movie_row = mb.get_row_by_title(movie, utils.MOVIES_TABLE)
-
+        movie_id = movie_row[0]
         global show_text
         item_text = "{0}\n{1}".format(movie, user_list[movie_row[1] - 1])
         if show_text:
@@ -36,12 +36,13 @@ def update_movie_list(movies_list: list):
         else:
             item = QListWidgetItem()
 
+            mb.download_poster(movie_id)
         try:
             item.setIcon(
-                QIcon(r"./images/posters/{0}.jpg".format(movie_row[0])))
+                QIcon(r"./images/posters/{0}.jpg".format(movie_id)))
         except:
             print('Was no cover')
-        movie_list_items[str(item)] = movie_row[0]
+        movie_list_items[str(item)] = movie_id
 
         ui.listMovies.addItem(item)
 
@@ -52,12 +53,14 @@ def update_watched_list(watched_list: list):
     user_list = mb.get_column(utils.NAME_COLUMN, utils.USERS_TABLE)
     for movie in watched_list:
         movie_row = mb.get_row_by_title(movie, utils.WATCHED_TABLE)
-
+        movie_id = movie_row[0]
         item_movie = QTreeWidgetItem()
+
+        mb.download_poster(movie_id)
         try:
             item_movie.setIcon(0,
                                QIcon(r"./images/posters/{0}.jpg".format(
-                                   movie_row[0])))
+                                   movie_id)))
         except:
             print('Was no poster')
 
@@ -75,7 +78,7 @@ def update_watched_list(watched_list: list):
                 item_movie.addChild(item_grade)
             index += 1
 
-        watched_tree_items[str(item_movie)] = movie_row[0]
+        watched_tree_items[str(item_movie)] = movie_id
 
         ui.watchedTree.addTopLevelItem(item_movie)
 
@@ -238,50 +241,51 @@ def delete_who_watch():
 
 
 def draw_movie():
-    users_count = ui.whoWillWatchList.count()
+    if os.path.exists('./GabiGolNoVasco.txt'):
+        users_count = ui.whoWillWatchList.count()
 
-    if users_count != 0:
-        who_watching = []
-        for i in range(users_count):
-            user = ui.whoWillWatchList.takeItem(0).text()
-            user_id = mb.get_user_id_by_name(user)
-            who_watching.append(user_id)
+        if users_count != 0:
+            who_watching = []
+            for i in range(users_count):
+                user = ui.whoWillWatchList.takeItem(0).text()
+                user_id = mb.get_user_id_by_name(user)
+                who_watching.append(user_id)
 
-        last_user_id = mb.get_last_movie_user_id()
-        if last_user_id in who_watching:
-            who_watching.remove(last_user_id)
+            last_user_id = mb.get_last_movie_user_id()
+            if last_user_id in who_watching:
+                who_watching.remove(last_user_id)
 
-        movies_list = []
-        for user_id in who_watching:
-            data = mb.get_movies_title_by_user_id(user_id, utils.MOVIES_TABLE)
+            movies_list = []
+            for user_id in who_watching:
+                data = mb.get_movies_title_by_user_id(user_id, utils.MOVIES_TABLE)
 
+                for item in data:
+                    movies_list.append(item[0])
+
+            user_index_draw = random.randrange(len(who_watching))
+            user_draw = who_watching[user_index_draw]
+
+            movies_list.clear()
+            data = mb.get_movies_title_by_user_id(user_draw, utils.MOVIES_TABLE)
             for item in data:
                 movies_list.append(item[0])
 
-        user_index_draw = random.randrange(len(who_watching))
-        user_draw = who_watching[user_index_draw]
+            movie_index_draw = random.randrange(len(movies_list))
+            movie_draw = movies_list[movie_index_draw]
 
-        movies_list.clear()
-        data = mb.get_movies_title_by_user_id(user_draw, utils.MOVIES_TABLE)
-        for item in data:
-            movies_list.append(item[0])
+            ui.titleLabel.setText(movie_draw)
+            user_name = mb.get_user_name_by_id(user_draw)
+            ui.userNameLabel.setText(user_name)
+            movie_id = mb.get_movie_id_by_title(movie_draw,utils.MOVIES_TABLE)
+            poster_path = './images/posters/' + str(movie_id) + '.jpg'
+            ui.posterLabel.setPixmap(QtGui.QPixmap(poster_path))
+            mb.move_to_watched(movie_id)
 
-        movie_index_draw = random.randrange(len(movies_list))
-        movie_draw = movies_list[movie_index_draw]
-
-        ui.titleLabel.setText(movie_draw)
-        user_name = mb.get_user_name_by_id(user_draw)
-        ui.userNameLabel.setText(user_name)
-        movie_id = mb.get_movie_id_by_title(movie_draw)
-        poster_path = './images/posters/' + str(movie_id) + '.jpg'
-        ui.posterLabel.setPixmap(QtGui.QPixmap(poster_path))
-        mb.move_to_watched(movie_id)
-
-        movies_list = mb.get_column(utils.TITLE_COLUMN, utils.MOVIES_TABLE)
-        update_movie_list(movies_list)
-        update_user_list()
-        watched_list = mb.get_column(utils.TITLE_COLUMN, utils.WATCHED_TABLE)
-        update_watched_list(watched_list)
+            movies_list = mb.get_column(utils.TITLE_COLUMN, utils.MOVIES_TABLE)
+            update_movie_list(movies_list)
+            update_user_list()
+            watched_list = mb.get_column(utils.TITLE_COLUMN, utils.WATCHED_TABLE)
+            update_watched_list(watched_list)
 
 
 # Page 3

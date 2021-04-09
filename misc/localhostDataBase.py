@@ -2,13 +2,13 @@ import mysql.connector
 from lib import utils
 
 
-class DataBase:
+class LHDataBase:
     def __init__(self):
         self.data_base = mysql.connector.connect(
-            host="sql10.freemysqlhosting.net",
-            user="sql10404400",
-            passwd="9GpWg3iQKk",
-            database="sql10404400"
+            host="localhost",
+            user="root",
+            passwd="",
+            database="movies_bala"
         )
         self.CURSOR = self.data_base.cursor()
 
@@ -56,7 +56,7 @@ class DataBase:
         sql_code = 'TRUNCATE ' + table + ";"
         self.__sql_executor(sql_code)
 
-    def get_data_limited(self, wanted_field: str, table: str,
+    def get_data_limited(self, wanted_field, table: str,
                          start: str, end: str) -> list:
         sql_code = 'SELECT ' + wanted_field + ' FROM  ' + table + \
                    ' LIMIT ' + start + ',' + end + ';'
@@ -66,7 +66,7 @@ class DataBase:
     def get_data_ordered(self, wanted_field: str, table: str,
                          user_name: str, order: str) -> list:
         sql_code = 'SELECT ' + wanted_field + ' FROM  ' + table + \
-                   ' WHERE ' + user_name + ' IS NOT NULL  ORDER BY ' \
+                   ' WHERE ' + user_name + ' IS NOT NULL  ORDER BY '\
                    + user_name + ' ' + order + ';'
 
         self.__sql_executor(sql_code)
