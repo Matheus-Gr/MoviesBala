@@ -8,7 +8,7 @@ from lib import data_base
 class PhotoSearch:
     def __init__(self):
         self.IMDB_URL = 'https://www.imdb.com/'
-        self.SAVE_FOLDER = './images/posters'
+        self.SAVE_FOLDER = './rsc/posters'
         self.SLEEP_TIME = 0
         self.DATA_BASE = data_base.DataBase()
         if not os.path.exists(self.SAVE_FOLDER):
@@ -51,8 +51,12 @@ class PhotoSearch:
 
         print("Image Link: " + image_link)
 
-        self.DATA_BASE.insert_a_data('posters(movie_id,url)',
-                                     str(movie_id) + ',"' + image_link + '"')
+        if image_link != '':
+            self.DATA_BASE.insert_a_data('posters(movie_id,url)',
+                                         str(movie_id) + ',"' +
+                                         image_link + '"')
+        else:
+            return 1
 
         return 0
 

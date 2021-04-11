@@ -1,6 +1,7 @@
 import os
 import random
 
+from collections import Counter
 from PyQt5 import uic, QtWidgets
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon
@@ -20,26 +21,29 @@ def init_data():
     update_movie_list(movies_list)
     watched_list = mb.get_column(utils.TITLE_COLUMN, utils.WATCHED_TABLE)
     update_watched_list(watched_list)
+    update_statistics()
 
 
 def update_movie_list(movies_list: list):
     movie_list_items.clear()
     ui.listMovies.clear()
-    user_list = mb.get_column(utils.NAME_COLUMN, utils.USERS_TABLE)
     for movie in movies_list:
         movie_row = mb.get_row_by_title(movie, utils.MOVIES_TABLE)
         movie_id = movie_row[0]
+        user_id = movie_row[1]
+        user = mb.get_user_name_by_id(user_id)
+
         global show_text
-        item_text = "{0}\n{1}".format(movie, user_list[movie_row[1] - 1])
+        item_text = "{0}\n{1}".format(movie, user)
         if show_text:
             item = QListWidgetItem(item_text)
         else:
             item = QListWidgetItem()
 
-            mb.download_poster(movie_id)
         try:
+            mb.download_poster(movie_id)
             item.setIcon(
-                QIcon(r"./images/posters/{0}.jpg".format(movie_id)))
+                QIcon(r"./rsc/posters/{0}.jpg".format(movie_id)))
         except:
             print('Was no cover')
         movie_list_items[str(item)] = movie_id
@@ -51,25 +55,28 @@ def update_watched_list(watched_list: list):
     watched_tree_items.clear()
     ui.watchedTree.clear()
     user_list = mb.get_column(utils.NAME_COLUMN, utils.USERS_TABLE)
+    position = 1
     for movie in watched_list:
         movie_row = mb.get_row_by_title(movie, utils.WATCHED_TABLE)
         movie_id = movie_row[0]
+        rotten = movie_row[3]
         item_movie = QTreeWidgetItem()
 
-        mb.download_poster(movie_id)
         try:
+            mb.download_poster(movie_id)
             item_movie.setIcon(0,
-                               QIcon(r"./images/posters/{0}.jpg".format(
+                               QIcon(r"./rsc/posters/{0}.jpg".format(
                                    movie_id)))
         except:
             print('Was no poster')
 
-        if movie_row[3] is not None:
+        if rotten is not None:
             item_movie.setText(0,
-                               "{0}\nRotten:{1}%".format(movie,
-                                                         round(movie_row[3])))
+                               "{0}#  {1}\nRotten:{2}%".format(position, movie,
+                                                               round(rotten)))
         else:
-            item_movie.setText(0, "{0}".format(movie))
+            item_movie.setText(0, "{0}#  {1}".format(position, movie))
+
         index = 4
         for user in user_list:
             if movie_row[index] is not None:
@@ -81,8 +88,7 @@ def update_watched_list(watched_list: list):
         watched_tree_items[str(item_movie)] = movie_id
 
         ui.watchedTree.addTopLevelItem(item_movie)
-
-    ui.movieCounterLabel.setText(str(len(watched_list)))
+        position += 1
 
 
 def update_user_list():
@@ -121,6 +127,11 @@ def update_user_list():
     ui.ratingColumnPicker.addItem('Rotten')
     ui.ratingColumnPicker.addItems(user_list)
 
+    # Page 4
+    ui.userStatistics.clear()
+    ui.userStatistics.addItem('None')
+    ui.userStatistics.addItems(user_list)
+
 
 def show_page_1():
     ui.appPages.setCurrentIndex(0)
@@ -134,13 +145,22 @@ def show_page_3():
     ui.appPages.setCurrentIndex(2)
 
 
+def show_page_4():
+    ui.appPages.setCurrentIndex(3)
+
+
+def reset_feedbacks():
+    ui.feedBackAdded.setText('')
+    ui.gradeFeedBackLabel.setText('')
+
+
 # Page 1
 def filter_movie_list():
+    reset_feedbacks()
     user = ui.movieFilter.currentText()
 
     if user != 'None':
         user_id = mb.get_user_id_by_name(user)
-
         data = mb.get_movies_title_by_user_id(user_id, utils.MOVIES_TABLE)
 
         movies_list = []
@@ -153,6 +173,7 @@ def filter_movie_list():
 
 
 def add_movie():
+    reset_feedbacks()
     title = ui.movieLineEdit.text()
 
     if title != '':
@@ -161,13 +182,25 @@ def add_movie():
             ui.movieLineEdit.setText('')
             user_id = mb.get_user_id_by_name(user)
 
-            mb.add_movie(title, user_id)
+            added = mb.add_movie(title, user_id)
+            if added:
+                ui.feedBackAdded.setText('Movie added successfully! ')
+                ui.feedBackAdded.setStyleSheet('QLabel#feedBackAdded{'
+                                               'color: rgb(51, 228, 154);}')
+            elif not added:
+                ui.feedBackAdded.setText('Movie not found!')
+                ui.feedBackAdded.setStyleSheet('QLabel#feedBackAdded{'
+                                               'color: rgb(255, 9, 9);}')
+
             movies_list = mb.get_column(utils.TITLE_COLUMN, utils.MOVIES_TABLE)
             update_movie_list(movies_list)
             update_user_list()
+    else:
+        ui.feedBackAdded.setText('')
 
 
 def delete_movie():
+    reset_feedbacks()
     item = ui.listMovies.currentItem()
 
     if item:
@@ -176,17 +209,24 @@ def delete_movie():
 
         mb.delete_movie(movie_id)
 
+        ui.feedBackAdded.setText('Movie deleted successfully! ')
+        ui.feedBackAdded.setStyleSheet('QLabel#feedBackAdded{'
+                                       'color: rgb(51, 228, 154);}')
+
         movies_list = mb.get_column(utils.TITLE_COLUMN, utils.MOVIES_TABLE)
         update_movie_list(movies_list)
         update_user_list()
 
         try:
-            os.remove("./images/posters/" + str(movie_id) + ".jpg")
+            os.remove("./rsc/posters/" + str(movie_id) + ".jpg")
         except:
             print('Was no poster')
+    else:
+        ui.feedBackAdded.setText('')
 
 
 def add_user():
+    reset_feedbacks()
     user = ui.registerUserLineEdit.text()
     if user != '':
         ui.registerUserLineEdit.setText('')
@@ -195,14 +235,33 @@ def add_user():
 
 
 def delete_user():
+    reset_feedbacks()
     item = ui.listUser.selectedItems()
     if item:
-        item_index = ui.listUser.row(item[0])
-        mb.delete_user(item_index + 1)
+        user_name = item[0].text()
+        print(user_name)
+        user_id = mb.get_user_id_by_name(user_name)
+
+        data = mb.get_movies_title_by_user_id(user_id, utils.MOVIES_TABLE)
+        movies_list = []
+        for movie in data:
+            movies_list.append(movie[0])
+
+        if movies_list:
+            for movie in movies_list:
+                movie_id = mb.get_movie_id_by_title(movie, utils.MOVIES_TABLE)
+                mb.delete_movie(movie_id)
+            movies_list = mb.get_column(utils.TITLE_COLUMN,
+                                        utils.MOVIES_TABLE)
+            update_movie_list(movies_list)
+
+        mb.delete_user(user_id)
+
         update_user_list()
 
 
 def set_list_mode():
+    reset_feedbacks()
     ui.listMovies.setFlow(QListWidget.TopToBottom)
     ui.listMovies.setWrapping(False)
     global show_text
@@ -213,6 +272,7 @@ def set_list_mode():
 
 
 def set_grid_mode():
+    reset_feedbacks()
     ui.listMovies.setFlow(QListWidget.LeftToRight)
     ui.listMovies.setWrapping(True)
     global show_text
@@ -240,7 +300,7 @@ def delete_who_watch():
 
 
 def draw_movie():
-    if os.path.exists('./GabiGolNoVasco.txt'):
+    if os.path.exists('./patoNaculudu.txt'):
         users_count = ui.whoWillWatchList.count()
 
         if users_count != 0:
@@ -277,7 +337,7 @@ def draw_movie():
             user_name = mb.get_user_name_by_id(user_draw)
             ui.userNameLabel.setText(user_name)
             movie_id = mb.get_movie_id_by_title(movie_draw, utils.MOVIES_TABLE)
-            poster_path = './images/posters/' + str(movie_id) + '.jpg'
+            poster_path = './rsc/posters/' + str(movie_id) + '.jpg'
             ui.posterLabel.setPixmap(QtGui.QPixmap(poster_path))
             mb.move_to_watched(movie_id)
 
@@ -287,26 +347,57 @@ def draw_movie():
             watched_list = mb.get_column(utils.TITLE_COLUMN,
                                          utils.WATCHED_TABLE)
             update_watched_list(watched_list)
+            update_statistics()
 
 
 # Page 3
 def rating():
+    reset_feedbacks()
     item = ui.watchedTree.selectedItems()
     if item:
         move_id = watched_tree_items.get(str(item[0]))
         user_name = ui.userRating.currentText()
 
         grade = ui.gradeLineEdit.text()
+
         if grade != '' and user_name != 'None' and move_id is not None:
-            mb.add_rating(user_name, move_id, float(grade))
+            if '.' in grade:
+                if '.5' not in grade and '.0' not in grade:
+                    ui.gradeFeedBackLabel.setText('Invalid input!')
+                    ui.gradeFeedBackLabel.setStyleSheet(
+                        'QLabel#gradeFeedBackLabel{'
+                        'color: rgb(255, 5, 5);}')
+                    return
+            try:
+                grade = float(grade)
+            except:
+                ui.gradeFeedBackLabel.setText('Invalid input!')
+                ui.gradeFeedBackLabel.setStyleSheet('QLabel#gradeFeedBackLabel{'
+                                                    'color: rgb(255, 5, 5);}')
+                return
+
+            if mb.has_grade(move_id, user_name):
+                ui.gradeFeedBackLabel.setText('Edited successfully!')
+                ui.gradeFeedBackLabel.setStyleSheet(
+                    'QLabel#gradeFeedBackLabel{'
+                    'color: rgb(51, 228, 154);}')
+            else:
+                ui.gradeFeedBackLabel.setText('Added successfully!')
+                ui.gradeFeedBackLabel.setStyleSheet(
+                    'QLabel#gradeFeedBackLabel{'
+                    'color: rgb(51, 228, 154);}')
+            mb.add_rating(user_name, move_id, grade)
+
             watched_list = mb.get_column(utils.TITLE_COLUMN,
                                          utils.WATCHED_TABLE)
             update_watched_list(watched_list)
+            update_statistics()
             ui.userRating.setCurrentText('None')
             ui.gradeLineEdit.setText('')
 
 
 def order_watched():
+    reset_feedbacks()
     order = ui.orderComboBox.currentText()
     user = ui.ratingColumnPicker.currentText()
 
@@ -341,6 +432,7 @@ def order_watched():
 
 
 def search_watched():
+    reset_feedbacks()
     ui.watchedTree.sortItems(0, 0)
     text = ui.search_watchedLineEdit.text()
     if text != '':
@@ -359,16 +451,115 @@ def search_watched():
     ui.search_watchedLineEdit.setText('')
 
 
+# Page 4
+def update_statistics():
+    print('HERE')
+    rotten_list = mb.get_column(utils.ROTTEN_COLUMN, utils.WATCHED_TABLE)
+    rotten_list = [x for x in rotten_list if x is not None]
+    average_general_grades = 0
+    for rotten in rotten_list:
+        average_general_grades += rotten
+
+    average_general_grades /= len(rotten_list)
+    user_list = mb.get_column(utils.NAME_COLUMN, utils.USERS_TABLE)
+
+    all_grades = []
+    for user in user_list:
+        user_grades = mb.get_column(user, utils.WATCHED_TABLE)
+        for grade in user_grades:
+            if grade is not None:
+                all_grades.append(grade)
+    occurrence_count = Counter(all_grades)
+
+    movies_list = mb.get_column(utils.TITLE_COLUMN, utils.WATCHED_TABLE)
+    most_audience = 0
+    most_audience_title = ''
+    for movie in movies_list:
+        row = mb.get_row_by_title(movie, utils.WATCHED_TABLE)
+        for pop in range(4):
+            row.pop(0)
+        clean = [x for x in row if x is not None]
+        if len(clean) > most_audience:
+            most_audience = len(clean)
+            most_audience_title = movie
+
+    ui.generalStatistic.setText("Average rotten:    {0}\n"
+                                "Grade most given:    {1},   {2} times\n"
+                                "Movie with bigger audience:    {3}"
+                                .format(round(average_general_grades),
+                                        occurrence_count.most_common(1)[0][0],
+                                        occurrence_count.most_common(1)[0][1],
+                                        most_audience_title))
+
+    user = ui.userStatistics.currentText()
+
+    if user != 'None' and user != '':
+        user_id = mb.get_user_id_by_name(user)
+        data = mb.get_movies_title_by_user_id(user_id, utils.WATCHED_TABLE)
+        user_grades = mb.get_column(user, utils.WATCHED_TABLE)
+        clean = [x for x in user_grades if x is not None]
+
+        if data or clean:
+            titles_list = []
+            for item in data:
+                titles_list.append(item[0])
+
+            rotten_average = 0
+            movies_not_null = 0
+            for title in titles_list:
+                row = mb.get_row_by_title(title, utils.WATCHED_TABLE)
+                rotten = row[3]
+                if rotten is not None:
+                    rotten_average += rotten
+                    movies_not_null += 1
+
+            if data:
+                rotten_average /= movies_not_null
+                rotten_average = round(rotten_average)
+            else:
+                rotten_average = 'None'
+
+            occurrence_count = Counter(clean)
+
+            grades_average = 0
+            for grade in clean:
+                grades_average += grade
+
+            grades_average /= len(clean)
+            grades_average = round(grades_average, 1)
+
+            sort_average = (len(titles_list) * 100) / len(movies_list)
+            sort_average = round(sort_average, 2)
+            sort_average_watched = (movies_not_null * 100) / len(clean)
+            sort_average_watched = round(sort_average_watched, 2)
+
+            ui.usersStaticsLabel.setText(
+                "Rotten average your movies get:    {0}%\n"
+                "Average of grades that you give:    {1}\n"
+                "Grade that you most give:    {2},   {3} times\n"
+                "Average your movies is drawn:    {4}%\n"
+                "Average that you watch a movie indicated by you:    {5}%\n"
+                .format(rotten_average, grades_average,
+                        occurrence_count.most_common(1)[0][0],
+                        occurrence_count.most_common(1)[0][1],
+                        sort_average, sort_average_watched))
+        else:
+            ui.usersStaticsLabel.setText('')
+    else:
+        ui.usersStaticsLabel.setText('')
+
+
 app = QtWidgets.QApplication([])
-ui = uic.loadUi("./ui/moviesBala.ui")
+ui = uic.loadUi("./style/moviesBala.ui")
 init_data()
-sshFile = "style.css"
+sshFile = "./style/style.css"
 with open(sshFile, "r") as fh:
     app.setStyleSheet(fh.read())
 # MENU
 ui.actionMovies_List.triggered.connect(show_page_1)
 ui.actionDraw.triggered.connect(show_page_2)
 ui.actionRating.triggered.connect(show_page_3)
+ui.actionStatistic.triggered.connect(show_page_4)
 
 # PAGE 1
 ui.filterButton.clicked.connect(filter_movie_list)
@@ -388,6 +579,8 @@ ui.drawButton.clicked.connect(draw_movie)
 ui.ratingButton.clicked.connect(rating)
 ui.orderButton.clicked.connect(order_watched)
 ui.searchWatchedButton.clicked.connect(search_watched)
+
+ui.userStatistics.currentTextChanged.connect(update_statistics)
 
 ui.show()
 app.exec()

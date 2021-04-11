@@ -13,14 +13,19 @@ class MoviesBala:
                                        "'" + user_name + "'")
         self.__data_base.create_column(user_name)
 
-    def add_movie(self, title: str, user_id: int):
+    def add_movie(self, title: str, user_id: int) -> bool:
         self.__data_base.insert_a_data(utils.MOVIES_TABLE + '(user_id,title)',
                                        str(user_id) + ',"' + title + '"')
         movie_id = self.__data_base.get_data_where(utils.MOVIE_ID_COLUMN,
                                                    utils.MOVIES_TABLE,
                                                    utils.TITLE_COLUMN,
                                                    "'" + title + "'")[0][0]
-        self.__photo_search.get_url(title, movie_id)
+
+        error = self.__photo_search.get_url(title, movie_id)
+        if error:
+            self.delete_movie(movie_id)
+            return False
+        return True
 
     def delete_user(self, user_id: int):
         column = self.__data_base.get_data_where(utils.NAME_COLUMN,
@@ -162,3 +167,12 @@ class MoviesBala:
     def download_poster(self, movie_id: int):
         url = self.get_poster_url(movie_id)
         self.__photo_search.download_image(url, movie_id)
+
+    def has_grade(self, movie_id: int, user: str) -> bool:
+        grade = self.__data_base.get_data_where(user, utils.WATCHED_TABLE,
+                                                utils.MOVIE_ID_COLUMN,
+                                                str(movie_id))[0][0]
+
+        if grade is not None:
+            return True
+        return False

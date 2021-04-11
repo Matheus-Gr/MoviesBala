@@ -5,9 +5,14 @@ from lib import utils
 class DataBase:
     def __init__(self):
         self.data_base = mysql.connector.connect(
-            host="sql10.freemysqlhosting.net",
-            user="sql10404400",
-            passwd="9GpWg3iQKk",
+            # host="sql10.freemysqlhosting.net",
+            # user="sql10404400",
+            # passwd="9GpWg3iQKk",
+            # database="sql10404400"
+
+            host="localhost",
+            user="root",
+            passwd="",
             database="sql10404400"
         )
         self.CURSOR = self.data_base.cursor()
