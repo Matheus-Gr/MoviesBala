@@ -175,6 +175,7 @@ QPushButton#searchWatchedButton:hover{
 }
 
 QFrame#frame_25{
+    background-color: rgb(48, 48, 48);
     border-radius: 30px;
 }
 

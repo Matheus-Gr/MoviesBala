@@ -151,6 +151,7 @@ def show_page_4():
 
 def reset_feedbacks():
     ui.feedBackAdded.setText('')
+    ui.feedBackUsers.setText('')
     ui.gradeFeedBackLabel.setText('')
 
 
@@ -232,6 +233,9 @@ def add_user():
         ui.registerUserLineEdit.setText('')
         mb.add_user(user)
         update_user_list()
+        ui.feedBackUsers.setText('User added successfully! ')
+        ui.feedBackUsers.setStyleSheet('QLabel#feedBackUsers{'
+                                       'color: rgb(51, 228, 154);}')
 
 
 def delete_user():
@@ -256,7 +260,9 @@ def delete_user():
             update_movie_list(movies_list)
 
         mb.delete_user(user_id)
-
+        ui.feedBackUsers.setText('User and movies deleted successfully! ')
+        ui.feedBackUsers.setStyleSheet('QLabel#feedBackUsers{'
+                                       'color: rgb(51, 228, 154);}')
         update_user_list()
 
 
@@ -528,7 +534,14 @@ def update_statistics():
             grades_average /= len(clean)
             grades_average = round(grades_average, 1)
 
-            sort_average = (len(titles_list) * 100) / len(movies_list)
+            all_movies_not_null = 0
+            for movie in movies_list:
+                row = mb.get_row_by_title(movie, utils.WATCHED_TABLE)
+                rotten_movie_list = row[3]
+                if rotten_movie_list is not None:
+                    all_movies_not_null += 1
+
+            sort_average = (movies_not_null * 100) / all_movies_not_null
             sort_average = round(sort_average, 2)
             sort_average_watched = (movies_not_null * 100) / len(clean)
             sort_average_watched = round(sort_average_watched, 2)
@@ -550,7 +563,7 @@ def update_statistics():
 
 
 app = QtWidgets.QApplication([])
-ui = uic.loadUi("./style/moviesBala.ui")
+ui = uic.loadUi("./style/interface.ui")
 init_data()
 sshFile = "./style/style.css"
 with open(sshFile, "r") as fh:
@@ -559,7 +572,7 @@ with open(sshFile, "r") as fh:
 ui.actionMovies_List.triggered.connect(show_page_1)
 ui.actionDraw.triggered.connect(show_page_2)
 ui.actionRating.triggered.connect(show_page_3)
-ui.actionStatistic.triggered.connect(show_page_4)
+ui.actionStatistics.triggered.connect(show_page_4)
 
 # PAGE 1
 ui.filterButton.clicked.connect(filter_movie_list)

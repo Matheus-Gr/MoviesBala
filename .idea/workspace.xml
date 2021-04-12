@@ -1,128 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5d0db46b-ece8-41a5-8809-12161e525dc2" name="Default Changelist" comment="bug when online version">
-      <change afterPath="$PROJECT_DIR$/rsc/posters/59.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rsc/posters/75.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="5d0db46b-ece8-41a5-8809-12161e525dc2" name="Default Changelist" comment="feedback on registers, several bugs fixed, statistic page created, cleanup off non used files">
+      <change afterPath="$PROJECT_DIR$/style/interface.ui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GabiGolNoVasco.txt" beforeDir="false" afterPath="$PROJECT_DIR$/patoNaculudu.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bk/127_0_0_1.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bk/127_0_0_1.sql.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bk/movies_bala.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main/Analysis-00.toc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main/EXE-00.toc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main/PKG-00.pkg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main/PKG-00.toc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main/PYZ-00.pyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main/PYZ-00.toc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main/Tree-00.toc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main/Tree-01.toc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main/Tree-02.toc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main/base_library.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main/main.exe.manifest" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main/warn-main.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main/xref-main.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/icons/black_icons/add_black_24dp.svg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/icons/black_icons/add_black_24dp.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/icons/black_icons/delete_black_24dp.svg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/icons/black_icons/delete_black_24dp.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/icons/black_icons/edit_black_24dp.svg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/icons/black_icons/edit_black_24dp.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/icons/black_icons/expand_more_black_24dp.svg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/icons/black_icons/expand_more_black_24dp.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/icons/black_icons/filter_alt_black_24dp.svg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/icons/black_icons/filter_alt_black_24dp.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/icons/black_icons/filter_list_black_24dp.svg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/icons/black_icons/filter_list_black_24dp.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/icons/black_icons/format_list_bulleted_black_24dp.svg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/icons/black_icons/format_list_bulleted_black_24dp.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/icons/black_icons/image_black_24dp.svg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/icons/black_icons/image_black_24dp.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/icons/black_icons/movie.svg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/icons/black_icons/movie.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/icons/black_icons/movie_black_24dp.svg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/icons/black_icons/movie_black_24dp.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/icons/black_icons/person_add_black_24dp.svg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/icons/black_icons/person_add_black_24dp.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/icons/black_icons/person_remove_black_24dp.svg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/icons/black_icons/person_remove_black_24dp.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/icons/black_icons/role-playing.svg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/icons/black_icons/role-playing.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/icons/black_icons/search_black_24dp.svg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/icons/black_icons/search_black_24dp.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/icons/black_icons/star_black_24dp.svg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/icons/black_icons/star_black_24dp.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/icons/black_icons/star_border_black_24dp.svg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/icons/black_icons/star_border_black_24dp.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/icons/black_icons/userAlt.svg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/icons/black_icons/userAlt.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/icons/black_icons/window_black_24dp.svg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/icons/black_icons/window_black_24dp.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/icons/logobala.png" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/icons/logobala.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/icons/white_icons/grid_on_white_24dp.svg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/icons/white_icons/grid_on_white_24dp.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/icons/white_icons/subject_white_24dp.svg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/icons/white_icons/subject_white_24dp.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/10.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/10.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/11.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/11.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/12.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/12.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/13.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/13.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/14.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/14.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/15.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/15.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/16.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/16.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/17.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/17.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/18.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/18.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/19.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/19.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/20.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/20.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/21.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/21.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/22.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/22.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/23.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/23.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/24.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/24.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/25.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/25.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/26.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/26.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/27.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/27.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/28.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/28.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/29.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/29.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/3.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/30.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/30.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/31.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/31.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/32.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/32.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/33.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/33.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/34.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/34.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/35.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/35.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/36.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/36.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/37.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/37.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/38.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/38.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/39.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/39.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/4.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/40.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/40.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/41.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/41.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/42.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/42.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/43.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/43.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/44.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/44.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/45.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/45.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/46.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/46.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/47.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/47.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/48.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/48.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/49.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/49.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/5.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/50.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/50.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/51.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/51.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/52.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/52.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/53.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/53.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/54.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/54.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/6.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/6.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/7.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/7.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/8.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/8.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posters/9.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/9.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data_base.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data_base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/movies_bala.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/movies_bala.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/photo_search.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/photo_search.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.spec" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/PyQt5/exec1.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/PyQt5/exec2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/PyQt5/exec3.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/PyQt5/exec_base.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/PyQt5/testing.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/backup.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/beto.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/copy_database.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/curu.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/data.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/localhostDataBase.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/moviesBALA.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/myPyQtLearning.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/testField.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/exec1.ui" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/exec2.ui" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/exec3.ui" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/moviesBala.ui" beforeDir="false" afterPath="$PROJECT_DIR$/style/moviesBala.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/training.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/style/moviesBala.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/style/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -415,7 +299,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617989454232</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="feedback on registers, several bugs fixed, statistic page created, cleanup off non used files">
+      <created>1618183465831</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1618183465831</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -448,6 +339,7 @@
     <MESSAGE value="version 1.2&#10;online posters" />
     <MESSAGE value="better search bar on rating page" />
     <MESSAGE value="bug when online version" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug when online version" />
+    <MESSAGE value="feedback on registers, several bugs fixed, statistic page created, cleanup off non used files" />
+    <option name="LAST_COMMIT_MESSAGE" value="feedback on registers, several bugs fixed, statistic page created, cleanup off non used files" />
   </component>
 </project>
