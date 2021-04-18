@@ -368,7 +368,7 @@ def add_user():
 
 def delete_user():
     reset_feedbacks()
-    if os.path.exists('./patoNaculudu.txt'):
+    if os.path.exists(utils.PASSWORD_FILE):
         item = ui.listUser.selectedItems()
         if item:
             user_name = item[0].text()
@@ -378,6 +378,10 @@ def delete_user():
                 for movie in movies_list:
                     movie_id = mb.get_movie_id_by_title(movie, movies_table)
                     mb.delete_movie(movie_id)
+                    try:
+                        os.remove("./rsc/posters/" + str(movie_id) + ".jpg")
+                    except:
+                        print('Was no poster')
 
             mb.delete_user(user_id)
             ui.feedBackUsers.setText('User and movies deleted successfully! ')
@@ -540,6 +544,12 @@ def rating():
             try:
                 grade = float(grade)
             except:
+                ui.gradeFeedBackLabel.setText('Invalid input!')
+                ui.gradeFeedBackLabel.setStyleSheet('QLabel#gradeFeedBackLabel{'
+                                                    'color: rgb(255, 5, 5);}')
+                return
+
+            if grade > 5 or grade < 0 or grade % 0.5 != 0:
                 ui.gradeFeedBackLabel.setText('Invalid input!')
                 ui.gradeFeedBackLabel.setStyleSheet('QLabel#gradeFeedBackLabel{'
                                                     'color: rgb(255, 5, 5);}')

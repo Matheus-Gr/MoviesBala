@@ -20,7 +20,7 @@ class MoviesBala:
         movie_id = self.__data_base.get_data_where(utils.MOVIE_ID_COLUMN,
                                                    utils.MOVIES_TABLE,
                                                    utils.TITLE_COLUMN,
-                                                   "'" + title + "'")[0][0]
+                                                   '"' + title + '"')[0][0]
 
         error = self.__photo_search.get_url(title, movie_id)
         if error:
