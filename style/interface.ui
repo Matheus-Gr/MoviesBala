@@ -1064,7 +1064,7 @@
                  <property name="geometry">
                   <rect>
                    <x>70</x>
-                   <y>480</y>
+                   <y>460</y>
                    <width>271</width>
                    <height>81</height>
                   </rect>
@@ -1129,7 +1129,7 @@
                   </font>
                  </property>
                  <property name="text">
-                  <string>What is going next?</string>
+                  <string/>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignBottom|Qt::AlignHCenter</set>
@@ -1157,6 +1157,35 @@
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignHCenter|Qt::AlignTop</set>
+                 </property>
+                </widget>
+                <widget class="QPushButton" name="confirmButton">
+                 <property name="enabled">
+                  <bool>true</bool>
+                 </property>
+                 <property name="geometry">
+                  <rect>
+                   <x>160</x>
+                   <y>550</y>
+                   <width>91</width>
+                   <height>61</height>
+                  </rect>
+                 </property>
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset>
+                   <normaloff>../rsc/icons/black_icons/check_black_24dp.svg</normaloff>../rsc/icons/black_icons/check_black_24dp.svg</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>50</width>
+                   <height>50</height>
+                  </size>
                  </property>
                 </widget>
                </widget>
@@ -1766,7 +1795,7 @@
               <property name="geometry">
                <rect>
                 <x>30</x>
-                <y>110</y>
+                <y>100</y>
                 <width>486</width>
                 <height>81</height>
                </rect>
@@ -1799,9 +1828,9 @@
               <property name="geometry">
                <rect>
                 <x>30</x>
-                <y>340</y>
+                <y>320</y>
                 <width>486</width>
-                <height>171</height>
+                <height>191</height>
                </rect>
               </property>
               <property name="minimumSize">
@@ -1835,7 +1864,7 @@
               <property name="geometry">
                <rect>
                 <x>30</x>
-                <y>280</y>
+                <y>260</y>
                 <width>491</width>
                 <height>41</height>
                </rect>
@@ -1865,7 +1894,7 @@
               <property name="geometry">
                <rect>
                 <x>30</x>
-                <y>70</y>
+                <y>60</y>
                 <width>481</width>
                 <height>41</height>
                </rect>
@@ -1886,7 +1915,7 @@
               <property name="geometry">
                <rect>
                 <x>30</x>
-                <y>230</y>
+                <y>210</y>
                 <width>481</width>
                 <height>41</height>
                </rect>
@@ -2015,8 +2044,6 @@
    </property>
   </action>
  </widget>
- <resources>
-  <include location="../../../../AppData/Local/Programs/Python/Python39/Lib/site-packages/qt5_applications/Qt/bin/teste.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

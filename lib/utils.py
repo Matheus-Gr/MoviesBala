@@ -10,3 +10,5 @@ TITLE_COLUMN = 'title'
 ROTTEN_COLUMN = 'rotten'
 ALL_COLUMNS = '*'
 URL_COLUMN = 'url'
+
+PASSWORD_FILE = './patoNaculudu.txt'

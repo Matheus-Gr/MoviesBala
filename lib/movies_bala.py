@@ -3,6 +3,7 @@ from lib import data_base, utils, photo_search
 
 # -*- coding: utf-8 -*-
 
+
 class MoviesBala:
     def __init__(self):
         self.__data_base = data_base.DataBase()
@@ -43,15 +44,13 @@ class MoviesBala:
         self.__data_base.delete_data(utils.POSTER_TABLE, utils.MOVIE_ID_COLUMN,
                                      str(movie_id))
 
-    def move_to_watched(self, movie_id: int):
-        user_id = self.__data_base.get_data_where(utils.USERS_ID_COLUMN,
-                                                  utils.MOVIES_TABLE,
-                                                  utils.MOVIE_ID_COLUMN,
-                                                  str(movie_id))[0][0]
-        title = self.__data_base.get_data_where(utils.TITLE_COLUMN,
-                                                utils.MOVIES_TABLE,
-                                                utils.MOVIE_ID_COLUMN,
-                                                str(movie_id))[0][0]
+    def move_to_watched(self, movie_id: int, movies_table: list):
+        user_id = -1
+        title = ''
+        for movie in movies_table:
+            if movie[utils.MOVIE_ID_COLUMN] == movie_id:
+                user_id = movie[utils.USERS_ID_COLUMN]
+                title = movie[utils.TITLE_COLUMN]
 
         self.__data_base.insert_a_data(utils.WATCHED_TABLE +
                                        "(user_id,movie_id,title)",
@@ -90,31 +89,6 @@ class MoviesBala:
                                      str(rotten), utils.MOVIE_ID_COLUMN,
                                      str(movie_id))
 
-    def get_column(self, column: str, table: str) -> list:
-        data = self.__data_base.get_column_data(column, table)
-        data_list = []
-        for item in data:
-            data_list.append(item[0])
-        return data_list
-
-    def get_user_id_by_name(self, name: str) -> int:
-        return self.__data_base.get_data_where(utils.USERS_ID_COLUMN,
-                                               utils.USERS_TABLE,
-                                               utils.NAME_COLUMN,
-                                               "'" + name + "'")[0][0]
-
-    def get_user_id_by_movie_title(self, movie) -> int:
-        return self.__data_base.get_data_where(utils.USERS_ID_COLUMN,
-                                               utils.MOVIES_TABLE,
-                                               utils.TITLE_COLUMN,
-                                               "'" + movie + "'")[0][0]
-
-    def get_movies_title_by_user_id(self, user_id: int, table: str) -> list:
-        return self.__data_base.get_data_where(utils.TITLE_COLUMN,
-                                               table,
-                                               utils.USERS_ID_COLUMN,
-                                               str(user_id))
-
     def get_last_movie_user_id(self) -> int:
         total = self.__data_base.get_column_data('count(*)',
                                                  utils.WATCHED_TABLE)[0][0]
@@ -125,24 +99,6 @@ class MoviesBala:
                                                     str(total - 1),
                                                     '1')[0][0]
         return user_id
-
-    def get_movie_id_by_title(self, title: str, table: str) -> int:
-        return self.__data_base.get_data_where(utils.MOVIE_ID_COLUMN,
-                                               table,
-                                               utils.TITLE_COLUMN,
-                                               "'" + title + "'")[0][0]
-
-    def get_user_name_by_id(self, user_id: int) -> str:
-        return self.__data_base.get_data_where(utils.NAME_COLUMN,
-                                               utils.USERS_TABLE,
-                                               utils.USERS_ID_COLUMN,
-                                               str(user_id))[0][0]
-
-    def get_row_by_title(self, title: str, table: str) -> list:
-        return list(self.__data_base.get_data_where(utils.ALL_COLUMNS,
-                                                    table,
-                                                    utils.TITLE_COLUMN,
-                                                    "'" + title + "'")[0])
 
     def get_watched_list_ordered(self, highest: bool, user) -> list:
         if highest:
@@ -164,9 +120,13 @@ class MoviesBala:
                                                utils.MOVIE_ID_COLUMN,
                                                str(movie_id))[0][0]
 
-    def download_poster(self, movie_id: int):
-        url = self.get_poster_url(movie_id)
-        self.__photo_search.download_image(url, movie_id)
+    def download_poster(self, movie_id: int, posters_table: list):
+        url = None
+        for poster in posters_table:
+            if poster[utils.MOVIE_ID_COLUMN] == movie_id:
+                url = poster[utils.URL_COLUMN]
+        if url is not None:
+            self.__photo_search.download_image(url, movie_id)
 
     def has_grade(self, movie_id: int, user: str) -> bool:
         grade = self.__data_base.get_data_where(user, utils.WATCHED_TABLE,
@@ -176,3 +136,43 @@ class MoviesBala:
         if grade is not None:
             return True
         return False
+
+    def get_table(self, table: str) -> list:
+        return self.__data_base.get_column_data(utils.ALL_COLUMNS, table)
+
+    def get_movies_title_by_name(self, name: str, users_table: list,
+                                 movies_table: list):
+        user_id = self.get_user_id_by_name(name, users_table)
+        return self.get_movies_title_by_user_id(user_id, movies_table)
+
+    @staticmethod
+    def get_movie_id_by_title(title: str, table: list) -> int:
+        for movie in table:
+            if movie[utils.TITLE_COLUMN] == title:
+                return movie[utils.MOVIE_ID_COLUMN]
+
+    @staticmethod
+    def get_user_name_by_id(user_id: int, user_table: list) -> str:
+        for user in user_table:
+            if user[utils.USERS_ID_COLUMN] == user_id:
+                return user[utils.NAME_COLUMN]
+
+    @staticmethod
+    def get_rotten(title: str, table: list) -> list:
+        for movie in table:
+            if movie[utils.TITLE_COLUMN] == title:
+                return movie[utils.ROTTEN_COLUMN]
+
+    @staticmethod
+    def get_user_id_by_name(name: str, users_table: list) -> int:
+        for user in users_table:
+            if user[utils.NAME_COLUMN] == name:
+                return user[utils.USERS_ID_COLUMN]
+
+    @staticmethod
+    def get_movies_title_by_user_id(user_id: int, table: list) -> list:
+        movies_titles = []
+        for movie in table:
+            if movie[utils.USERS_ID_COLUMN] == user_id:
+                movies_titles.append(movie[utils.TITLE_COLUMN])
+        return movies_titles

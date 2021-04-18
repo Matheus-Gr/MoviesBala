@@ -107,7 +107,7 @@ QPushButton{
     border-radius: 25px;
     background-color: rgb(80, 80, 80);
 }
-QPushButton#addMovieButton:hover,#addUserButton:hover, #addWhoWatchButton:hover{
+QPushButton#addMovieButton:hover,#addUserButton:hover, #addWhoWatchButton:hover, #confirmButton:hover{
     background-color: rgb(51, 228, 154);
 }
 QPushButton#deleteMovieButton:hover,#deleteUserButton:hover, #deleteWhoWatchButton:hover{
