@@ -1,13 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5d0db46b-ece8-41a5-8809-12161e525dc2" name="Default Changelist" comment="version 1.3.2">
-      <change afterPath="$PROJECT_DIR$/patoNaculudu.txt" afterDir="false" />
+    <list default="true" id="5d0db46b-ece8-41a5-8809-12161e525dc2" name="Default Changelist" comment="version 1.3.3">
+      <change afterPath="$PROJECT_DIR$/lib/temp_db.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/temp_mb.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main.spec" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rsc/icons/black_icons/Otavio-Mapa_Matheus-Goncalves.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data_base.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data_base.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/movies_bala.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/movies_bala.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/photo_search.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/photo_search.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.spec" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rsc/posters/37.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/37.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rsc/posters/38.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/38.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rsc/posters/39.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/39.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rsc/posters/40.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/40.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rsc/posters/41.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/41.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rsc/posters/42.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/42.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rsc/posters/43.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/43.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rsc/posters/44.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/44.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rsc/posters/45.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/45.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rsc/posters/46.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/46.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rsc/posters/47.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/47.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rsc/posters/48.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/48.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rsc/posters/49.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/49.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rsc/posters/50.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/50.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rsc/posters/51.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/51.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rsc/posters/52.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/52.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rsc/posters/53.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/53.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rsc/posters/54.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rsc/posters/54.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style/interface.ui" beforeDir="false" afterPath="$PROJECT_DIR$/style/interface.ui" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,69 +91,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Python.main">
-    <configuration name="exec1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Sorteio2.0" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/misc/PyQt5" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/misc/PyQt5/exec1.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="exec2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Sorteio2.0" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/misc/PyQt5" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/misc/PyQt5/exec2.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="exec3" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Sorteio2.0" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/misc/PyQt5" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/misc/PyQt5/exec3.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Sorteio2.0" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -151,7 +112,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="temp" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Sorteio2.0" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -163,7 +124,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/temp.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -173,19 +134,13 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.exec1" />
-      <item itemvalue="Python.exec2" />
-      <item itemvalue="Python.exec3" />
       <item itemvalue="Python.main" />
-      <item itemvalue="Python.temp" />
+      <item itemvalue="Python.test" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
-        <item itemvalue="Python.temp" />
-        <item itemvalue="Python.exec3" />
-        <item itemvalue="Python.exec2" />
-        <item itemvalue="Python.exec1" />
+        <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
   </component>
@@ -335,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618708083163</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="version 1.3.3">
+      <created>1618719590491</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1618719590491</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -373,6 +335,7 @@
     <MESSAGE value="new icon, and some ui changes" />
     <MESSAGE value="version 1.3.1" />
     <MESSAGE value="version 1.3.2" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 1.3.2" />
+    <MESSAGE value="version 1.3.3" />
+    <option name="LAST_COMMIT_MESSAGE" value="version 1.3.3" />
   </component>
 </project>

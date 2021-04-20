@@ -1,4 +1,4 @@
-from lib import data_base, utils, photo_search
+from lib import temp_db, utils, photo_search
 
 
 # -*- coding: utf-8 -*-
@@ -6,7 +6,7 @@ from lib import data_base, utils, photo_search
 
 class MoviesBala:
     def __init__(self):
-        self.__data_base = data_base.DataBase()
+        self.__data_base = temp_db.DataBase()
         self.__photo_search = photo_search.PhotoSearch()
 
     def add_user(self, user_name: str):
@@ -23,8 +23,8 @@ class MoviesBala:
                                                    '"' + title + '"')[0][0]
 
         error = self.__photo_search.scraping(title, movie_id)
+        print('ERRO ============ ' + str(error))
         if error:
-            print('NOT FOUND! will be deleted')
             self.delete_movie(movie_id)
             return False
         return True

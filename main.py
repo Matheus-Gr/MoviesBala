@@ -20,7 +20,7 @@ draw_movie_id = -1
 users_table = []
 movies_table = []
 watched_table = []
-posters_table = []
+scraping_table = []
 
 # LISTS
 global_users_list = []
@@ -37,8 +37,6 @@ def init_data():
 
     build_watched_table()
     build_watched_list()
-
-    build_posters_table()
 
     update_user_list_ui()
     update_movie_list_ui()
@@ -93,15 +91,16 @@ def build_watched_table():
         watched_table.append(movie_dict)
 
 
-def build_posters_table():
-    posters_table.clear()
-    data = mb.get_table(utils.POSTER_TABLE)
-    for poster in data:
-        poster_dict = {
-            'movie_id': poster[0],
-            'url': poster[1]
+def build_scraping_table():
+    scraping_table.clear()
+    data = mb.get_table(utils.SCRAPING_TABLE)
+    for movie in data:
+        movie_dict = {
+            'movie_id': movie[0],
+            'url': movie[1],
+            'time': movie[2]
         }
-        posters_table.append(poster_dict)
+        scraping_table.append(movie_dict)
 
 
 def build_user_list():
@@ -123,6 +122,7 @@ def build_watched_list():
 
 
 def update_movie_list_ui(movies_list=None):
+    build_scraping_table()
     if movies_list is None:
         movies_list = global_movies_list
 
@@ -135,15 +135,17 @@ def update_movie_list_ui(movies_list=None):
             movie_id = movie[utils.MOVIE_ID_COLUMN]
             user_id = movie[utils.USERS_ID_COLUMN]
             user_name = mb.get_user_name_by_id(user_id, users_table)
-
-            item_text = "{0}\n{1}".format(title, user_name)
+            movie_time = mb.get_movie_time_by_id(movie_id, scraping_table)
+            item_text = "{0}\n{1}\n{2}".format(title,
+                                               str(movie_time),
+                                               user_name)
             if show_text:
                 item = QListWidgetItem(item_text)
             else:
                 item = QListWidgetItem()
 
             try:
-                mb.download_poster(movie_id, posters_table)
+                mb.download_poster(movie_id, scraping_table)
                 item.setIcon(
                     QIcon(r"./rsc/posters/{0}.jpg".format(movie_id)))
             except:
@@ -169,7 +171,7 @@ def update_watched_list_ui(watched_list=None):
 
                 item_movie = QTreeWidgetItem()
                 try:
-                    mb.download_poster(movie_id, posters_table)
+                    mb.download_poster(movie_id, scraping_table)
                     item_movie.setIcon(0,
                                        QIcon(r"./rsc/posters/{0}.jpg".format(
                                            movie_id)))
@@ -289,7 +291,7 @@ def filter_movie_list():
                                                     movies_table)
         update_movie_list_ui(movies_titles)
     else:
-        update_movie_list_ui(global_movies_list)
+        movies_updates()
 
 
 def add_movie():
@@ -302,17 +304,30 @@ def add_movie():
             ui.movieLineEdit.setText('')
             user_id = mb.get_user_id_by_name(user, users_table)
 
-            added = mb.add_movie(title, user_id)
-            if added:
-                ui.feedBackAdded.setText('Movie added successfully! ')
-                ui.feedBackAdded.setStyleSheet('QLabel#feedBackAdded{'
-                                               'color: rgb(51, 228, 154);}')
-            elif not added:
-                ui.feedBackAdded.setText('Movie not found!')
+            not_on_list = True
+            for movie in movies_table:
+                if movie[utils.TITLE_COLUMN] == title:
+                    not_on_list = False
+            for movie in watched_table:
+                if movie[utils.TITLE_COLUMN] == title:
+                    not_on_list = False
+
+            if not_on_list:
+                added = mb.add_movie(title, user_id)
+                if added:
+                    ui.feedBackAdded.setText('Movie added successfully! ')
+                    ui.feedBackAdded.setStyleSheet('QLabel#feedBackAdded{'
+                                                   'color: rgb(51, 228, 154);}')
+                elif not added:
+                    ui.feedBackAdded.setText('Movie not found!')
+                    ui.feedBackAdded.setStyleSheet('QLabel#feedBackAdded{'
+                                                   'color: rgb(255, 9, 9);}')
+            else:
+                ui.feedBackAdded.setText('Movie already on Movies Bala!')
                 ui.feedBackAdded.setStyleSheet('QLabel#feedBackAdded{'
                                                'color: rgb(255, 9, 9);}')
             # UPDATES
-            build_posters_table()
+            build_scraping_table()
             users_updates()
             movies_updates()
     else:
@@ -334,7 +349,7 @@ def delete_movie():
         # UPDATES
         movies_updates()
         users_updates()
-        build_posters_table()
+        build_scraping_table()
         try:
             os.remove("./rsc/posters/" + str(movie_id) + ".jpg")
         except:
@@ -494,12 +509,18 @@ def draw_movie():
 
             ui.titleLabel.setText(movie_draw)
             user_name = mb.get_user_name_by_id(user_draw, users_table)
-            ui.userNameLabel.setText(user_name)
             global draw_movie_id
             draw_movie_id = mb.get_movie_id_by_title(movie_draw, movies_table)
             poster_path = './rsc/posters/' + str(draw_movie_id) + '.jpg'
             ui.posterLabel.setPixmap(QtGui.QPixmap(poster_path))
             ui.confirmButton.setVisible(True)
+
+            movie_time = ''
+            for movie in scraping_table:
+                if movie[utils.MOVIE_ID_COLUMN] == draw_movie_id:
+                    movie_time = movie[utils.TIME_COLUMN]
+
+            ui.userNameLabel.setText("{0} - {1}".format(user_name, movie_time))
 
 
 def confirm_draw():
@@ -622,6 +643,7 @@ def order_watched():
 
 
 def search_watched():
+    watched_updates()
     reset_feedbacks()
     ui.watchedTree.sortItems(0, 0)
     text = ui.search_watchedLineEdit.text()
@@ -632,7 +654,6 @@ def search_watched():
                 watched_list.append(movie)
     else:
         watched_list = global_watched_list
-
     try:
         update_watched_list_ui(watched_list)
     except:
@@ -662,10 +683,13 @@ def update_statistics():
 
     occurrence_count = Counter(all_grades)
 
+    # AUDIENCE VARIABLES
     most_audience = 0
     most_audience_title = ''
+
     for movie in watched_table:
         audience = 0
+        # GETTING AUDIENCE
         for user in global_users_list:
             if movie[user] is not None:
                 audience += 1
@@ -674,13 +698,23 @@ def update_statistics():
             most_audience = audience
             most_audience_title = movie[utils.TITLE_COLUMN]
 
-    ui.generalStatistic.setText("Average rotten:    {0}\n"
-                                "Grade most given:    {1},   {2} times\n"
-                                "Movie with bigger audience:    {3}"
-                                .format(round(average_general_grades),
-                                        occurrence_count.most_common(1)[0][0],
-                                        occurrence_count.most_common(1)[0][1],
-                                        most_audience_title))
+    general_time = get_time_data(watched_table)
+
+    ui.generalStatistic.setText("Rotten average:    {0}\n"
+                                "Grade most given:    {1},   {2} times\n\n"
+                                "Bigger audience:    {3}\n\n"
+                                "Shortest:    {4},   {5}\n"
+                                "Longest:    {6},   {7}\n"
+                                "Total watch time:    {8}"
+                                "".format(round(average_general_grades),
+                                          occurrence_count.most_common(1)[0][0],
+                                          occurrence_count.most_common(1)[0][1],
+                                          most_audience_title,
+                                          general_time[0]['title'],
+                                          general_time[0]['time'],
+                                          general_time[1]['title'],
+                                          general_time[1]['time'],
+                                          general_time[2]))
 
     user = ui.userStatistics.currentText()
 
@@ -713,10 +747,16 @@ def update_statistics():
 
             grades_average_other = 0
             movies_watched = 0
+
+            # GETTING GRADES IN ALL MOVIES YOU HAVE RATED
+            movies_this_user_watched = []
             for movie in watched_table:
                 if movie[user] is not None:
                     movies_watched += 1
                     grades_average_other += movie[user]
+                    movies_this_user_watched.append(movie)
+
+            user_time = get_time_data(movies_this_user_watched)
 
             if grades_average_other:
                 grades_average_other /= movies_watched
@@ -753,18 +793,95 @@ def update_statistics():
                 "Rotten average your movies get:    {0}\n"
                 "Average of grades that you give:    {1}\n"
                 "Average of grades that you give to your movies:    {2}\n"
-                "Grade that you most give:    {3},   {4} times\n"
+                "Grade that you most give:    {3},   {4} times\n\n"
                 "Average your movies is drawn:    {5}%\n"
-                "Average that you watch a movie indicated by you:    {6}%\n"
-                .format(rotten_average, grades_average_other,
-                        grades_average_yours,
-                        occurrence_count.most_common(1)[0][0],
-                        occurrence_count.most_common(1)[0][1],
-                        sort_average, sort_average_watched))
+                "Average that you watch your movies:    {6}%\n\n"
+                "Shortest:    {7},   {8}\n"
+                "Longest:    {9},   {10}\n"
+                "Total watch time:    {11}"
+                    .format(rotten_average, grades_average_other,
+                            grades_average_yours,
+                            occurrence_count.most_common(1)[0][0],
+                            occurrence_count.most_common(1)[0][1],
+                            sort_average, sort_average_watched,
+                            user_time[0]['title'], user_time[0]['time'],
+                            user_time[1]['title'], user_time[1]['time'],
+                            user_time[2]))
         else:
             ui.usersStaticsLabel.setText('')
     else:
         ui.usersStaticsLabel.setText('')
+
+
+def get_time_data(movie_table: list) -> list:
+    # TIME VARIABLES
+    general_sec = 0
+    this_movie_sec = 0
+    longest_movie = {
+        'title': '',
+        'sec': 0,
+        'time': ''
+    }
+    shortest_movie = {
+        'title': '',
+        'sec': 86400,
+        'time': ''
+    }
+    for movie in movie_table:
+        for scrap in scraping_table:
+            if scrap[utils.MOVIE_ID_COLUMN] == movie[utils.MOVIE_ID_COLUMN]:
+                movie_time = str(scrap[utils.TIME_COLUMN])
+                if 'h' in movie_time and 'min' in movie_time:
+                    movie_time = movie_time.replace("min", "").replace(" ",
+                                                                       "")
+                    values = movie_time.split('h')
+                    this_movie_sec += int(values[0]) * 60 * 60
+                    this_movie_sec += int(values[1]) * 60
+                elif 'h' in movie_time and 'min' not in movie_time:
+                    movie_time = movie_time.replace("h", "")
+                    this_movie_sec += int(movie_time) * 60 * 60
+                else:
+                    movie_time = movie_time.replace("min", "")
+                    this_movie_sec += int(movie_time) * 60
+
+                general_sec += this_movie_sec
+                if this_movie_sec > longest_movie['sec']:
+                    longest_movie['title'] = movie[utils.TITLE_COLUMN]
+                    longest_movie['sec'] = this_movie_sec
+
+                if this_movie_sec < shortest_movie['sec']:
+                    shortest_movie['title'] = movie[utils.TITLE_COLUMN]
+                    shortest_movie['sec'] = this_movie_sec
+
+                this_movie_sec = 0
+
+    # CALCULATING SHORTEST MOVIE TIME
+    shortest_sec = shortest_movie['sec']
+    shortest_hours = str((shortest_sec / 60) / 60)
+    shortest_hours = int(shortest_hours.split('.')[0])
+    shortest_minutes = str((shortest_sec / 60) % 60)
+    shortest_minutes = int(shortest_minutes.split('.')[0])
+    shortest_movie['time'] = '{0}h {1}min'.format(shortest_hours,
+                                                  shortest_minutes)
+
+    # CALCULATING LONGEST MOVIE TIME
+    longest_sec = longest_movie['sec']
+    longest_hours = str((longest_sec / 60) / 60)
+    longest_hours = int(longest_hours.split('.')[0])
+    longest_minutes = str((longest_sec / 60) % 60)
+    longest_minutes = int(longest_minutes.split('.')[0])
+    longest_movie['time'] = '{0}h {1}min'.format(longest_hours,
+                                                 longest_minutes)
+
+    # CALCULATING GENERAL WATCH TIME
+    general_hours = str((general_sec / 60) / 60)
+    general_hours = int(general_hours.split('.')[0])
+    general_minutes = str((general_sec / 60) % 60)
+    general_minutes = int(general_minutes.split('.')[0])
+    general_watch_time = '{0}h {1}min'.format(general_hours,
+                                              general_minutes)
+
+    return [shortest_movie, longest_movie, general_watch_time]
 
 
 app = QtWidgets.QApplication([])

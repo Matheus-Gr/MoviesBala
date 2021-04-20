@@ -55,7 +55,7 @@
        <cursorShape>ArrowCursor</cursorShape>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="page">
        <layout class="QGridLayout" name="gridLayout_2">
@@ -1139,7 +1139,7 @@
                  <property name="geometry">
                   <rect>
                    <x>0</x>
-                   <y>380</y>
+                   <y>370</y>
                    <width>411</width>
                    <height>31</height>
                   </rect>
@@ -1775,13 +1775,13 @@
             <widget class="QFrame" name="frame_25">
              <property name="minimumSize">
               <size>
-               <width>550</width>
+               <width>950</width>
                <height>550</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>550</width>
+               <width>950</width>
                <height>550</height>
               </size>
              </property>
@@ -1795,14 +1795,14 @@
               <property name="geometry">
                <rect>
                 <x>30</x>
-                <y>100</y>
-                <width>486</width>
-                <height>81</height>
+                <y>110</y>
+                <width>411</width>
+                <height>431</height>
                </rect>
               </property>
               <property name="minimumSize">
                <size>
-                <width>486</width>
+                <width>0</width>
                 <height>0</height>
                </size>
               </property>
@@ -1823,14 +1823,17 @@
               <property name="text">
                <string>TextLabel</string>
               </property>
+              <property name="alignment">
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+              </property>
              </widget>
              <widget class="QLabel" name="usersStaticsLabel">
               <property name="geometry">
                <rect>
-                <x>30</x>
-                <y>320</y>
+                <x>450</x>
+                <y>170</y>
                 <width>486</width>
-                <height>191</height>
+                <height>371</height>
                </rect>
               </property>
               <property name="minimumSize">
@@ -1859,19 +1862,22 @@
               <property name="text">
                <string>TextLabel</string>
               </property>
+              <property name="alignment">
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+              </property>
              </widget>
              <widget class="QComboBox" name="userStatistics">
               <property name="geometry">
                <rect>
-                <x>30</x>
-                <y>260</y>
-                <width>491</width>
+                <x>450</x>
+                <y>110</y>
+                <width>471</width>
                 <height>41</height>
                </rect>
               </property>
               <property name="minimumSize">
                <size>
-                <width>486</width>
+                <width>0</width>
                 <height>0</height>
                </size>
               </property>
@@ -1895,7 +1901,7 @@
                <rect>
                 <x>30</x>
                 <y>60</y>
-                <width>481</width>
+                <width>421</width>
                 <height>41</height>
                </rect>
               </property>
@@ -1914,8 +1920,8 @@
              <widget class="QLabel" name="label_6">
               <property name="geometry">
                <rect>
-                <x>30</x>
-                <y>210</y>
+                <x>450</x>
+                <y>60</y>
                 <width>481</width>
                 <height>41</height>
                </rect>

@@ -14,7 +14,7 @@ class PhotoSearch:
         if not os.path.exists(self.SAVE_FOLDER):
             os.mkdir(self.SAVE_FOLDER)
 
-    def get_url(self, movie_title: str, movie_id: int) -> int:
+    def scraping(self, movie_title: str, movie_id: int) -> int:
         print('\nStart searching for {0}...'.format(movie_title))
 
         movie_title = self.__treat_string(movie_title)
@@ -44,6 +44,12 @@ class PhotoSearch:
         html = response.text
         soup = BeautifulSoup(html, 'html.parser')
 
+        movie_time = ''
+        for result in soup.findAll('div', {'class': 'subtext'}):
+            movie_time = str(result.find('time').get_text())
+            movie_time = movie_time.strip()
+            print(movie_time)
+
         image_link = ''
         for result in soup.findAll('div', {'class': 'poster'}):
             image = result.find('img', src=True)
@@ -51,10 +57,14 @@ class PhotoSearch:
 
         print("Image Link: " + image_link)
 
-        if image_link != '':
-            self.DATA_BASE.insert_a_data('posters(movie_id,url)',
-                                         str(movie_id) + ',"' +
-                                         image_link + '"')
+        if image_link != '' and movie_time != '':
+            try:
+                self.DATA_BASE.insert_a_data('scraping(movie_id,url,time)',
+                                             str(movie_id) + ',"' +
+                                             image_link + '","' +
+                                             movie_time + '"')
+            except:
+                return 1
         else:
             return 1
 
@@ -72,9 +82,9 @@ class PhotoSearch:
             i += 1
         return ''.join(string_list)
 
-    def download_image(self, url, movie_id):
+    def download_image(self, url: str, movie_id: int):
         image_name = self.SAVE_FOLDER + '/' + str(movie_id) + '.jpg'
-        print(image_name)
+        # print(image_name)
 
         if not os.path.exists(image_name):
             print("Starting download...")
@@ -92,5 +102,5 @@ class PhotoSearch:
             with open(image_name, 'wb') as file:
                 file.write(response.content)
                 print("Download finished!")
-        else:
-            print('Already downloaded')
+        # else:
+            # print('Already downloaded')
