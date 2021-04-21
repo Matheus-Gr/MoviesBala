@@ -33,9 +33,7 @@ class PhotoSearch:
         try:
             search_url = self.IMDB_URL + link['href']
         except:
-            print('################################ Movie not found! :/')
-            self.DATA_BASE.insert_a_data('posters(movie_id,url)',
-                                         str(movie_id) + ',"NULL"')
+            print('Movie not found! :/')
             return 1
 
         print("Sub searched url: " + search_url)

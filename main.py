@@ -364,17 +364,23 @@ def add_user():
     if user != '':
         ui.registerUserLineEdit.setText('')
         if ' ' not in user:
-            mb.add_user(user)
+            user = str(user)
+            if not user.isdecimal():
+                mb.add_user(user)
 
-            # UPDATES
-            build_users_table()
-            build_user_list()
-            watched_updates()
-            update_user_list_ui()
+                # UPDATES
+                build_users_table()
+                build_user_list()
+                watched_updates()
+                update_user_list_ui()
 
-            ui.feedBackUsers.setText('User added successfully! ')
-            ui.feedBackUsers.setStyleSheet('QLabel#feedBackUsers{'
-                                           'color: rgb(51, 228, 154);}')
+                ui.feedBackUsers.setText('User added successfully! ')
+                ui.feedBackUsers.setStyleSheet('QLabel#feedBackUsers{'
+                                               'color: rgb(51, 228, 154);}')
+            else:
+                ui.feedBackUsers.setText('Invalid input!')
+                ui.feedBackUsers.setStyleSheet('QLabel#feedBackUsers{'
+                                               'color: rgb(255, 9, 9);}')
         else:
             ui.feedBackUsers.setText('Invalid input!')
             ui.feedBackUsers.setStyleSheet('QLabel#feedBackUsers{'
@@ -443,9 +449,8 @@ def add_who_watch():
 def delete_who_watch():
     user = ui.whoWillWatchList.selectedItems()
 
-    if not user:
-        return
-    ui.whoWillWatchList.takeItem(ui.whoWillWatchList.row(user[0]))
+    if user:
+        ui.whoWillWatchList.takeItem(ui.whoWillWatchList.row(user[0]))
 
 
 def draw_movie():
@@ -698,9 +703,9 @@ def update_statistics():
             most_audience = audience
             most_audience_title = movie[utils.TITLE_COLUMN]
 
-    general_time = get_time_data(watched_table)
+    general_time = get_time_data(watched_table, True)
 
-    ui.generalStatistic.setText("Rotten average:    {0}\n"
+    ui.generalStatistic.setText("Rotten average:    {0}%\n"
                                 "Grade most given:    {1},   {2} times\n\n"
                                 "Bigger audience:    {3}\n\n"
                                 "Shortest:    {4},   {5}\n"
@@ -813,7 +818,7 @@ def update_statistics():
         ui.usersStaticsLabel.setText('')
 
 
-def get_time_data(movie_table: list) -> list:
+def get_time_data(movie_table: list, is_general=False) -> list:
     # TIME VARIABLES
     general_sec = 0
     this_movie_sec = 0
@@ -844,7 +849,12 @@ def get_time_data(movie_table: list) -> list:
                     movie_time = movie_time.replace("min", "")
                     this_movie_sec += int(movie_time) * 60
 
-                general_sec += this_movie_sec
+                add_sec = True
+                if is_general:
+                    if movie[utils.ROTTEN_COLUMN] is None:
+                        add_sec = False
+                if add_sec:
+                    general_sec += this_movie_sec
                 if this_movie_sec > longest_movie['sec']:
                     longest_movie['title'] = movie[utils.TITLE_COLUMN]
                     longest_movie['sec'] = this_movie_sec
@@ -916,6 +926,7 @@ ui.ratingButton.clicked.connect(rating)
 ui.orderButton.clicked.connect(order_watched)
 ui.searchWatchedButton.clicked.connect(search_watched)
 
+# PAGE 4
 ui.userStatistics.currentTextChanged.connect(update_statistics)
 
 ui.show()

@@ -5,15 +5,15 @@ from lib import utils
 class DataBase:
     def __init__(self):
         self.data_base = mysql.connector.connect(
-            # host="mysqlserver.clud8bxqayre.sa-east-1.rds.amazonaws.com",
-            # user="apubala",
-            # passwd="Marte123-",
-            # database="movies_bala"
-
-            host="localhost",
-            user="root",
-            passwd="",
+            host="mysqlserver.clud8bxqayre.sa-east-1.rds.amazonaws.com",
+            user="apubala",
+            passwd="Marte123-",
             database="movies_bala"
+
+            # host="localhost",
+            # user="root",
+            # passwd="",
+            # database="movies_bala"
         )
         self.CURSOR = self.data_base.cursor()
 
@@ -78,7 +78,5 @@ class DataBase:
 
     def __sql_executor(self, sql_code: str):
         print("> {0}".format(sql_code))
-        # try:
         self.CURSOR.execute(sql_code)
-        # except:
-        #     print('Connection error')
+

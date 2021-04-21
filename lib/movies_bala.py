@@ -12,6 +12,7 @@ class MoviesBala:
     def add_user(self, user_name: str):
         self.__data_base.insert_a_data(utils.USERS_TABLE + '(name)',
                                        "'" + user_name + "'")
+
         self.__data_base.create_column(user_name)
 
     def add_movie(self, title: str, user_id: int) -> bool:
