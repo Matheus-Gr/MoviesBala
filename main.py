@@ -328,8 +328,8 @@ def add_movie():
                                                'color: rgb(255, 9, 9);}')
             # UPDATES
             build_scraping_table()
-            users_updates()
             movies_updates()
+            users_updates()
     else:
         ui.feedBackAdded.setText('')
 
@@ -741,7 +741,7 @@ def update_statistics():
                     rotten_average += rotten
                     movies_not_null += 1
 
-            if users_movies:
+            if users_movies and movies_not_null != 0:
                 rotten_average /= movies_not_null
                 rotten_average = round(rotten_average)
                 rotten_average = str(rotten_average) + '%'
@@ -791,8 +791,27 @@ def update_statistics():
 
             sort_average = (movies_not_null * 100) / all_movies_not_null
             sort_average = round(sort_average, 2)
-            sort_average_watched = (movies_not_null * 100) / len(user_grades)
-            sort_average_watched = round(sort_average_watched, 2)
+            if user_grades:
+                sort_average_watched = (movies_not_null * 100) / len(
+                    user_grades)
+                sort_average_watched = round(sort_average_watched, 2)
+                sort_average_watched = str(sort_average_watched) + "%"
+                average_give = occurrence_count.most_common(1)[0][0]
+                average_got = occurrence_count.most_common(1)[0][1]
+                shortest_movie = user_time[0]['title']
+                shortest_time = user_time[0]['time']
+                longest_movie = user_time[1]['title']
+                longest_time = user_time[1]['time']
+                watched_time = user_time[2]
+            else:
+                shortest_movie = 'None'
+                shortest_time = 'None'
+                longest_movie = 'None'
+                longest_time = 'None'
+                watched_time = 'None'
+                average_give = 'None'
+                average_got = 'None'
+                sort_average_watched = 'None'
 
             ui.usersStaticsLabel.setText(
                 "Rotten average your movies get:    {0}\n"
@@ -800,18 +819,15 @@ def update_statistics():
                 "Average of grades that you give to your movies:    {2}\n"
                 "Grade that you most give:    {3},   {4} times\n\n"
                 "Average your movies is drawn:    {5}%\n"
-                "Average that you watch your movies:    {6}%\n\n"
+                "Average that you watch your movies:    {6}\n\n"
                 "Shortest:    {7},   {8}\n"
                 "Longest:    {9},   {10}\n"
                 "Total watch time:    {11}"
                     .format(rotten_average, grades_average_other,
-                            grades_average_yours,
-                            occurrence_count.most_common(1)[0][0],
-                            occurrence_count.most_common(1)[0][1],
-                            sort_average, sort_average_watched,
-                            user_time[0]['title'], user_time[0]['time'],
-                            user_time[1]['title'], user_time[1]['time'],
-                            user_time[2]))
+                            grades_average_yours, average_give, average_got,
+                            sort_average, sort_average_watched, shortest_movie,
+                            shortest_time, longest_movie, longest_time,
+                            watched_time))
         else:
             ui.usersStaticsLabel.setText('')
     else:
