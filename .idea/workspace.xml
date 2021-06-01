@@ -1,30 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5d0db46b-ece8-41a5-8809-12161e525dc2" name="Default Changelist" comment="bugs on registers and statistics">
-      <change afterPath="$PROJECT_DIR$/main.spec" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="5d0db46b-ece8-41a5-8809-12161e525dc2" name="Default Changelist" comment="issue on scrapping fixed, and other bugs, version 1.4.2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/photo_search.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/photo_search.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rsc/icons/black_icons/Otavio-Mapa_Matheus-Goncalves.zip" beforeDir="false" afterPath="$PROJECT_DIR$/public/icons/black_icons/Otavio-Mapa_Matheus-Goncalves.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rsc/icons/black_icons/add_black_24dp.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/icons/black_icons/add_black_24dp.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rsc/icons/black_icons/check_black_24dp.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/icons/black_icons/check_black_24dp.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rsc/icons/black_icons/delete_black_24dp.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/icons/black_icons/delete_black_24dp.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rsc/icons/black_icons/expand_more_black_24dp.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/icons/black_icons/expand_more_black_24dp.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rsc/icons/black_icons/filter_alt_black_24dp.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/icons/black_icons/filter_alt_black_24dp.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rsc/icons/black_icons/image_black_24dp.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/icons/black_icons/image_black_24dp.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rsc/icons/black_icons/movie.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/icons/black_icons/movie.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rsc/icons/black_icons/role-playing.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/icons/black_icons/role-playing.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rsc/icons/black_icons/search_black_24dp.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/icons/black_icons/search_black_24dp.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rsc/icons/black_icons/star_black_24dp.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/icons/black_icons/star_black_24dp.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rsc/icons/black_icons/userAlt.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/icons/black_icons/userAlt.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rsc/icons/logobala.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/icons/logobala.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rsc/icons/white_icons/expand_more_white_24dp.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/icons/white_icons/expand_more_white_24dp.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rsc/icons/white_icons/grid_on_white_24dp.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/icons/white_icons/grid_on_white_24dp.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rsc/icons/white_icons/subject_white_24dp.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/icons/white_icons/subject_white_24dp.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/interface.ui" beforeDir="false" afterPath="$PROJECT_DIR$/style/interface.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -311,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618987377187</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="issue on scrapping fixed, and other bugs, version 1.4.2">
+      <created>1622512869875</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1622512869875</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -353,7 +339,8 @@
     <MESSAGE value="added time scraping" />
     <MESSAGE value="issue where movie not found was added, version 1.4" />
     <MESSAGE value="bugs on registers and statistics" />
-    <option name="LAST_COMMIT_MESSAGE" value="bugs on registers and statistics" />
+    <MESSAGE value="issue on scrapping fixed, and other bugs, version 1.4.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="issue on scrapping fixed, and other bugs, version 1.4.2" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

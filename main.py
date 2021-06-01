@@ -284,7 +284,6 @@ def reset_feedbacks():
 
 # Page 1
 def filter_movie_list():
-    reset_feedbacks()
     user = ui.movieFilter.currentText()
 
     if user != 'None':
@@ -316,6 +315,7 @@ def add_movie():
             if not_on_list:
                 added = mb.add_movie(title, user_id)
                 if added:
+                    print('Uai')
                     ui.feedBackAdded.setText('Movie added successfully! ')
                     ui.feedBackAdded.setStyleSheet('QLabel#feedBackAdded{'
                                                    'color: rgb(51, 228, 154);}')
