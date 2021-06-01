@@ -15,6 +15,7 @@ movie_list_items = {}
 watched_tree_items = {}
 last_movie_draw = ''
 draw_movie_id = -1
+arrow_up = True
 
 # TABLES
 users_table = []
@@ -147,7 +148,7 @@ def update_movie_list_ui(movies_list=None):
             try:
                 mb.download_poster(movie_id, scraping_table)
                 item.setIcon(
-                    QIcon(r"./rsc/posters/{0}.jpg".format(movie_id)))
+                    QIcon(r"./public/posters/{0}.jpg".format(movie_id)))
             except:
                 print('Was no cover')
             movie_list_items[str(item)] = movie_id
@@ -173,7 +174,7 @@ def update_watched_list_ui(watched_list=None):
                 try:
                     mb.download_poster(movie_id, scraping_table)
                     item_movie.setIcon(0,
-                                       QIcon(r"./rsc/posters/{0}.jpg".format(
+                                       QIcon(r"./public/posters/{0}.jpg".format(
                                            movie_id)))
                 except:
                     print('Was no poster')
@@ -351,7 +352,7 @@ def delete_movie():
         users_updates()
         build_scraping_table()
         try:
-            os.remove("./rsc/posters/" + str(movie_id) + ".jpg")
+            os.remove("./public/posters/" + str(movie_id) + ".jpg")
         except:
             print('Was no poster')
     else:
@@ -400,7 +401,7 @@ def delete_user():
                     movie_id = mb.get_movie_id_by_title(movie, movies_table)
                     mb.delete_movie(movie_id)
                     try:
-                        os.remove("./rsc/posters/" + str(movie_id) + ".jpg")
+                        os.remove("./public/posters/" + str(movie_id) + ".jpg")
                     except:
                         print('Was no poster')
 
@@ -504,7 +505,7 @@ def draw_movie():
             while not stop:
                 movie_index = random.randrange(len(movies_list))
                 movie_draw = movies_list[movie_index]
-                if last_movie_draw != '':
+                if last_movie_draw != '' and len(movies_list) > 1:
                     if movie_draw != last_movie_draw:
                         last_movie_draw = movie_draw
                         stop = True
@@ -516,7 +517,7 @@ def draw_movie():
             user_name = mb.get_user_name_by_id(user_draw, users_table)
             global draw_movie_id
             draw_movie_id = mb.get_movie_id_by_title(movie_draw, movies_table)
-            poster_path = './rsc/posters/' + str(draw_movie_id) + '.jpg'
+            poster_path = './public/posters/' + str(draw_movie_id) + '.jpg'
             ui.posterLabel.setPixmap(QtGui.QPixmap(poster_path))
             ui.confirmButton.setVisible(True)
 
@@ -603,6 +604,7 @@ def order_watched():
     reset_feedbacks()
     order = ui.orderComboBox.currentText()
     user = ui.ratingColumnPicker.currentText()
+    global arrow_up
 
     if order == 'Highest grade':
         watched_list = mb.get_watched_list_ordered(True, user)
@@ -636,7 +638,10 @@ def order_watched():
                                                        watched_table)
         else:
             watched_list = global_watched_list
-        watched_list.reverse()
+
+        if arrow_up:
+            arrow_up = False
+            watched_list.reverse()
         update_watched_list_ui(watched_list)
     elif order == 'Date ↓':
         if user != 'Rotten':
@@ -644,6 +649,10 @@ def order_watched():
                                                        watched_table)
         else:
             watched_list = global_watched_list
+
+        if not arrow_up:
+            arrow_up = True
+            watched_list.reverse()
         update_watched_list_ui(watched_list)
 
 
@@ -923,6 +932,7 @@ ui.actionRating.triggered.connect(show_page_3)
 ui.actionStatistics.triggered.connect(show_page_4)
 
 # PAGE 1
+ui.movieFilter.currentTextChanged.connect(filter_movie_list)
 ui.filterButton.clicked.connect(filter_movie_list)
 ui.addMovieButton.clicked.connect(add_movie)
 ui.deleteMovieButton.clicked.connect(delete_movie)

@@ -33,7 +33,7 @@ QComboBox::drop-down{
     border: none;
 }
 QComboBox::down-arrow{
-    image: url(./rsc/icons/white_icons/expand_more_white_24dp.svg);
+    image: url(./public/icons/white_icons/expand_more_white_24dp.svg);
     padding-right: 15px;
 }
 QComboBox QAbstractItemView {

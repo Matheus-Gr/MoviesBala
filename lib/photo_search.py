@@ -1,3 +1,4 @@
+import json
 import os
 import requests
 from bs4 import BeautifulSoup
@@ -7,8 +8,8 @@ from lib import data_base
 
 class PhotoSearch:
     def __init__(self):
-        self.IMDB_URL = 'https://www.imdb.com/'
-        self.SAVE_FOLDER = './rsc/posters'
+        self.IMDB_URL = 'https://www.imdb.com'
+        self.SAVE_FOLDER = './public/posters'
         self.SLEEP_TIME = 0
         self.DATA_BASE = data_base.DataBase()
         if not os.path.exists(self.SAVE_FOLDER):
@@ -18,14 +19,17 @@ class PhotoSearch:
         print('\nStart searching for {0}...'.format(movie_title))
 
         movie_title = self.__treat_string(movie_title)
-        search_url = self.IMDB_URL + 'find?q=' + movie_title
+        search_url = self.IMDB_URL + '/find?q=' + movie_title
+
+        # SEARCHING MOVIE
         print("Searched url: " + search_url)
 
-        response = requests.get(search_url)
         time.sleep(self.SLEEP_TIME)
-
+        response = requests.get(search_url)
         html = response.text
+        # print(html)
         soup = BeautifulSoup(html, 'html.parser')
+
         link = {}
         for result in soup.findAll('td', {'class': 'primary_photo'}, limit=1):
             link = result.find('a', href=True)
@@ -36,24 +40,27 @@ class PhotoSearch:
             print('Movie not found! :/')
             return 1
 
+        # SEARCHING POSTER AND TIME
         print("Sub searched url: " + search_url)
-        response = requests.get(search_url)
+
         time.sleep(self.SLEEP_TIME)
+        response = requests.get(search_url)
         html = response.text
+
         soup = BeautifulSoup(html, 'html.parser')
+        scrap = soup.find('script', type='application/ld+json')
 
         movie_time = ''
-        for result in soup.findAll('div', {'class': 'subtext'}):
-            movie_time = str(result.find('time').get_text())
-            movie_time = movie_time.strip()
-            print(movie_time)
-
         image_link = ''
-        for result in soup.findAll('div', {'class': 'poster'}):
-            image = result.find('img', src=True)
-            image_link = image['src']
+        if scrap:
+            image_link = json.loads(scrap.string)['image']
+            movie_time = json.loads(scrap.string)['duration']
+            movie_time = str(movie_time).replace("PT", " ")
+            movie_time = movie_time.replace("H", "h ")
+            movie_time = movie_time.replace("M", "min")
 
         print("Image Link: " + image_link)
+        print("Image Duration: " + movie_time)
 
         if image_link != '' and movie_time != '':
             try:
@@ -101,4 +108,4 @@ class PhotoSearch:
                 file.write(response.content)
                 print("Download finished!")
         # else:
-            # print('Already downloaded')
+        # print('Already downloaded')
