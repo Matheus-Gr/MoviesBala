@@ -4,6 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 import time
 from lib import data_base
+from PIL import Image
 
 
 class PhotoSearch:
@@ -48,6 +49,7 @@ class PhotoSearch:
         html = response.text
 
         soup = BeautifulSoup(html, 'html.parser')
+        # print(soup)
         scrap = soup.find('script', type='application/ld+json')
 
         movie_time = ''
@@ -89,7 +91,6 @@ class PhotoSearch:
 
     def download_image(self, url: str, movie_id: int):
         image_name = self.SAVE_FOLDER + '/' + str(movie_id) + '.jpg'
-        # print(image_name)
 
         if not os.path.exists(image_name):
             print("Starting download...")
@@ -107,5 +108,12 @@ class PhotoSearch:
             with open(image_name, 'wb') as file:
                 file.write(response.content)
                 print("Download finished!")
+
+            # print(image_name)
+            img = Image.open(image_name)
+            # print(img.size)
+            img = img.resize((182, 268))
+            # print(img.size)
+            img.save(image_name)
         # else:
         # print('Already downloaded')

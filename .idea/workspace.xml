@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5d0db46b-ece8-41a5-8809-12161e525dc2" name="Default Changelist" comment="issue on scrapping fixed, and other bugs, version 1.4.2">
+    <list default="true" id="5d0db46b-ece8-41a5-8809-12161e525dc2" name="Default Changelist" comment="fixed feedbacks on page 1, 1.4.3">
+      <change afterPath="$PROJECT_DIR$/field_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reload/data_base.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reload/movies_bala.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reload/photo_search.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data_base.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data_base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/photo_search.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/photo_search.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,25 +49,47 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/reload" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="two.files.diff.last.used.folder" value="$PROJECT_DIR$/posters" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\mathe\User\Projetos\Desktop\Sorteio\Sorteio2.0\reload" />
       <recent name="C:\Users\mathe\User\Projetos\Sorteio2.0\lib" />
       <recent name="C:\Users\mathe\User\Projetos\Sorteio2.0\misc" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\mathe\User\Projetos\Desktop\Sorteio\Sorteio2.0" />
+      <recent name="C:\Users\mathe\User\Projetos\Desktop\Sorteio\Sorteio2.0\reload" />
       <recent name="C:\Users\mathe\User\Projetos\Sorteio2.0\ui" />
       <recent name="C:\Users\mathe\User\Projetos\Sorteio2.0\misc\PyQt5\ui" />
       <recent name="C:\Users\mathe\User\Projetos\Sorteio2.0\misc\PyQt5\fotos" />
-      <recent name="C:\Users\mathe\User\Projetos\Sorteio2.0\misc\PyQt5" />
-      <recent name="C:\Users\mathe\User\Projetos\Sorteio2.0\misc" />
     </key>
   </component>
   <component name="RunManager" selected="Python.main">
+    <configuration name="field_test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Sorteio2.0" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="C:\Users\mathe\User\Projetos\Desktop\Sorteio\Sorteio2.0\field_test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Sorteio2.0" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -106,6 +133,7 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.field_test" />
       <item itemvalue="Python.main" />
       <item itemvalue="Python.test" />
     </list>
@@ -113,6 +141,7 @@
       <list>
         <item itemvalue="Python.main" />
         <item itemvalue="Python.test" />
+        <item itemvalue="Python.field_test" />
       </list>
     </recent_temporary>
   </component>
@@ -297,7 +326,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622512869875</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="fixed feedbacks on page 1, 1.4.3">
+      <created>1622513593168</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1622513593168</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -340,7 +376,8 @@
     <MESSAGE value="issue where movie not found was added, version 1.4" />
     <MESSAGE value="bugs on registers and statistics" />
     <MESSAGE value="issue on scrapping fixed, and other bugs, version 1.4.2" />
-    <option name="LAST_COMMIT_MESSAGE" value="issue on scrapping fixed, and other bugs, version 1.4.2" />
+    <MESSAGE value="fixed feedbacks on page 1, 1.4.3" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed feedbacks on page 1, 1.4.3" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
