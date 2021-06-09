@@ -12,4 +12,4 @@ ALL_COLUMNS = '*'
 URL_COLUMN = 'url'
 TIME_COLUMN = 'time'
 
-PASSWORD_FILE = './patoNaculudu.txt'
+PASSWORD_FILE = './caraFuaia.txt'

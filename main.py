@@ -1,12 +1,12 @@
-import os
-import random
-
+from lib import utils, movies_bala
 from collections import Counter
 from PyQt5 import uic, QtWidgets
-from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import *
 from PyQt5 import QtGui
-from lib import utils, movies_bala
+
+import os
+import random
 
 mb = movies_bala.MoviesBala()
 
@@ -455,7 +455,7 @@ def delete_who_watch():
 
 
 def draw_movie():
-    if os.path.exists('./patoNaculudu.txt'):
+    if os.path.exists(utils.PASSWORD_FILE):
         users_count = ui.whoWillWatchList.count()
 
         if users_count != 0:

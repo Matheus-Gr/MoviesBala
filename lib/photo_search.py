@@ -1,10 +1,10 @@
-import json
-import os
-import requests
 from bs4 import BeautifulSoup
-import time
 from lib import data_base
 from PIL import Image
+import requests
+import json
+import time
+import os
 
 
 class PhotoSearch:
@@ -13,6 +13,8 @@ class PhotoSearch:
         self.SAVE_FOLDER = './public/posters'
         self.SLEEP_TIME = 0
         self.DATA_BASE = data_base.DataBase()
+        self.WIDTH = 182
+        self.HEIGHT = 268
         if not os.path.exists(self.SAVE_FOLDER):
             os.mkdir(self.SAVE_FOLDER)
 
@@ -109,11 +111,8 @@ class PhotoSearch:
                 file.write(response.content)
                 print("Download finished!")
 
-            # print(image_name)
             img = Image.open(image_name)
-            # print(img.size)
-            img = img.resize((182, 268))
-            # print(img.size)
+            img = img.resize((self.WIDTH, self.HEIGHT))
             img.save(image_name)
         # else:
-        # print('Already downloaded')
+        #     print('Already downloaded')
